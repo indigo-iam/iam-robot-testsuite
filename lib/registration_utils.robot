@@ -5,6 +5,7 @@ Open registration form
   
 Close registration form
   Click Button  name=dismiss
+  Wait Until Page Does Not Contain  User Registration Form
   
 Register user  [Arguments]  ${name}  ${surname}  ${email}  ${username}
   Open registration form
@@ -16,3 +17,9 @@ Register user  [Arguments]  ${name}  ${surname}  ${email}  ${username}
   Click Element  name=register
   Wait Until Page Contains  Request submission success
   Click Link  link=Back to Login Page
+  
+Go to request management page
+  Login as admin
+  Go to Indigo dashboard
+  Click menu navigation entry  Requests
+  Wait Until Page Contains  List of pending requests

@@ -1,10 +1,10 @@
-FROM docker.io/centos:latest
+FROM docker.io/centos:7
 
 ## Layer: base
 RUN yum install -y epel-release && \
     yum clean all && \
     yum update -y && \
-    yum install -y python-pip wget unzip
+    yum install -y python-pip wget unzip git
 
 ## Layer: RobotFramework
 RUN pip install --upgrade pip && \

@@ -4,4 +4,5 @@ ${ADMIN_USER}      admin
 ${ADMIN_PASSWORD}  password
 
 ${BROWSER}         firefox
+${SPEED}           0
 

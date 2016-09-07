@@ -11,8 +11,13 @@ Login as admin
   Click Element  xpath=//input[@value='Login']
   Wait Until Page Contains  Welcome!
 
-Logout
+Logout from Mitre dashboard
   Click Element  id=userButton
   Click Element  xpath=//a[@class='logoutLink']
   Wait Until Page Contains  INDIGO IAM server-Log In
-  
+ 
+Logout from Indigo dashboard
+  Click Element  xpath=//li[@class='dropdown user user-menu']/a[@class='dropdown-toggle']/img[@class='user-image']
+  Wait Until Page Contains  Sign out
+  Click Link  link=Sign out
+  Wait Until Page Contains  INDIGO IAM server-Log In
