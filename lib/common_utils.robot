@@ -5,7 +5,7 @@ Setup
   Set Selenium Speed  ${SPEED}
 
 Go to IAM
-  Open Browser  ${IAM_BASE_URL}  browser=${BROWSER}
+  Open Browser  ${IAM_BASE_URL}  browser=${BROWSER}  remote_url=${REMOTE_URL}
   Setup
 
 Go to Indigo dashboard

@@ -5,4 +5,4 @@ ${ADMIN_PASSWORD}  password
 
 ${BROWSER}         firefox
 ${SPEED}           0
-
+${REMOTE_URL}      ${EMPTY}
