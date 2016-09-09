@@ -18,6 +18,7 @@ Click button with text  [Arguments]  ${text}
   Click Button  xpath=//button[text()='${text}']
   
 Click menu navigation entry  [Arguments]  ${entry}
+  Wait Until Page Contains  MAIN NAVIGATION
   Click Element  xpath=//ul[@class='sidebar-menu']/li/a/span[text()='${entry}']
   
 Wait until modal overlay disappear
