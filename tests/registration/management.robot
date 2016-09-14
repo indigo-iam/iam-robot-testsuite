@@ -21,6 +21,7 @@ Approve registration request
   Wait Until Page Contains  UserApproved adds a registration request
   Click Button  name=btn_approve
   Wait Until Page Contains  approved successfully
+  Delete user  UserApproved UserApproved
   
 Reject registration request
   Register user  UserRejected  UserRejected  user.rejected@example.it  userrejected
@@ -31,6 +32,7 @@ Reject registration request
   Click button with text  Reject Request
   Wait Until Page Contains  rejected successfully
   Wait until modal overlay disappear
+  Delete user  UserRejected UserRejected
   
 Cancel reject decision
   Register user  UserNotRejected  UserNotRejected  user.not.rejected@example.it  usernotrejected
@@ -41,9 +43,10 @@ Cancel reject decision
   Click button with text  Cancel
   Wait Until Page Contains  UserNotRejected adds a registration request
   Wait until modal overlay disappear
+  Delete user  UserNotRejected UserNotRejected
 
 Pagination
-  :FOR  ${index}  IN RANGE  1  21 
+  :FOR  ${index}  IN RANGE  01  21 
   \  Register user  User${index}  Tester${index}  user.tester.${index}@example.it  usertester${index}
   Go to request management page
   Page Should Contain Element  xpath=//ul[@uib-pagination='']
@@ -61,6 +64,8 @@ Pagination
   Pagination button should be enabled  Previous
   Pagination button should be disabled  Next
   Pagination button should be disabled  Last
+  :FOR  ${index}  IN RANGE  01  21
+  \  Delete user  User${index} Tester${index}
   
   
 *** Keyword ***

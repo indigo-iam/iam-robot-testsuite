@@ -1,11 +1,11 @@
 *** Keywords ***
 Open registration form
   Click Link  link=Register a new account
-  Wait Until Page Contains  User Registration Form
+  Wait Until Page Contains  User registration form
   
 Close registration form
   Click Button  name=dismiss
-  Wait Until Page Does Not Contain  User Registration Form
+  Wait Until Page Does Not Contain  User registration form
   
 Register user  [Arguments]  ${name}  ${surname}  ${email}  ${username}
   Open registration form

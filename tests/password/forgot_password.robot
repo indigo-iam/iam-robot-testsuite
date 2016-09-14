@@ -8,13 +8,13 @@ Suite Teardown  Close All Browsers
 *** Test Cases ***
 Open change password modal
   Click Link  link=Forgot your password?
-  Wait Until Page Contains  Please enter the email address for your IAM account.
+  Wait Until Page Contains  Please enter your IAM account email address
   Click Button  name=dismiss
 
 Submit change password request
   Click Link  link=Forgot your password?
-  Wait Until Page Contains  Please enter the email address for your IAM account.
+  Wait Until Page Contains  Please enter your IAM account email address
   Input text  id=email  tester@example.it
-  Click Element  xpath=//input[@value='Send']
+  Click Button  Submit
   Wait Until Page Contains  Done!
-  Click Button  name=dismiss
+  Click Button  Cancel
