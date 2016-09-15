@@ -40,6 +40,10 @@ Submit a new registration request
   Click Element  name=register
   Wait Until Page Contains  Request submission success
   Click Link  link=Back to Login Page
+  Login as admin
+  Go to Indigo dashboard
+  Delete user  Robot Tester
+  Logout from Indigo dashboard
 
 Reset button is disabled with empty form
   Open registration form
