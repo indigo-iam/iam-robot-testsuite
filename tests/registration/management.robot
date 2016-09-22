@@ -32,7 +32,6 @@ Reject registration request
   Click button with text  Reject Request
   Wait Until Page Contains  rejected successfully
   Wait until modal overlay disappear
-  Delete user  UserRejected UserRejected
   
 Cancel reject decision
   Register user  UserNotRejected  UserNotRejected  user.not.rejected@example.it  usernotrejected
