@@ -22,4 +22,4 @@ Go to request management page
   Login as admin
   Go to Indigo dashboard
   Click menu navigation entry  Requests
-  Wait Until Page Contains  List of pending requests
+  Wait Until Page Contains Element  xpath=//section[@class='content-header ng-scope']/h1[text()[contains(.,'Requests')]]

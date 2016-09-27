@@ -6,7 +6,7 @@ Delete user  [Arguments]  ${name}
   Input text  xpath=//div[@class='input-group']/input  ${name}
   Wait Until Page Contains  ${name}
   Click Element  xpath=//*[@id='userslist']/tbody/tr/td/a[text()='${name}']/../following-sibling::td/button
-  Wait Until Page Contains  Delete?
+  Wait Until Page Contains  Delete user
   Click Button  Delete User
   Wait until modal overlay disappear
-  Wait Until Page Contains  deleted successfully
+  Wait Until Page Contains  has been removed successfully
