@@ -42,6 +42,7 @@ Submit a new registration request
   Click Link  link=Back to Login Page
   Login as admin
   Go to Indigo dashboard
+  Go to users page
   Delete user  Robot Tester
   Logout from Indigo dashboard
 

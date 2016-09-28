@@ -17,9 +17,3 @@ Register user  [Arguments]  ${name}  ${surname}  ${email}  ${username}
   Click Element  name=register
   Wait Until Page Contains  Request submission success
   Click Link  link=Back to Login Page
-  
-Go to request management page
-  Login as admin
-  Go to Indigo dashboard
-  Click menu navigation entry  Requests
-  Wait Until Page Contains Element  xpath=//section[@class='content-header ng-scope']/h1[text()[contains(.,'Requests')]]
