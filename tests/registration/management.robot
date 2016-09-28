@@ -9,7 +9,7 @@ Test Teardown  Logout from Indigo dashboard
 *** Test Cases ***
 Empty page shows info message
   Go to request management page
-  Wait Until Page Contains  No pending requests found!
+  Wait Until Page Contains  No pending requests found.
 
 Empty page hide pagination bar
   Go to request management page
@@ -18,31 +18,30 @@ Empty page hide pagination bar
 Approve registration request
   Register user  UserApproved  UserApproved  user.approved@example.it  userapproved
   Go to request management page
-  Wait Until Page Contains  UserApproved adds a registration request
+  Requests table contains row with user  UserApproved UserApproved
   Click Button  name=btn_approve
-  Wait Until Page Contains  approved successfully
+  Wait Until Page Contains  request APPROVED successfully
   Delete user  UserApproved UserApproved
   
 Reject registration request
   Register user  UserRejected  UserRejected  user.rejected@example.it  userrejected
   Go to request management page
-  Wait Until Page Contains  UserRejected adds a registration request
+  Requests table contains row with user  UserRejected UserRejected
   Click Button  name=btn_reject
-  Wait Until Page Contains  Reject?
-  Click button with text  Reject Request
-  Wait Until Page Contains  rejected successfully
+  Wait Until Page Contains  Reject «UserRejected UserRejected» registration request
+  Click button with text  Reject Registration Request
+  Wait Until Page Contains  request REJECTED successfully
   Wait until modal overlay disappear
-  Delete user  UserRejected UserRejected
   
 Cancel reject decision
   Register user  UserNotRejected  UserNotRejected  user.not.rejected@example.it  usernotrejected
   Go to request management page
-  Wait Until Page Contains  UserNotRejected adds a registration request
+  Requests table contains row with user  UserNotRejected UserNotRejected
   Click Button  name=btn_reject
-  Wait Until Page Contains  Reject?
+  Wait Until Page Contains  Reject «UserNotRejected UserNotRejected» registration request
   Click button with text  Cancel
-  Wait Until Page Contains  UserNotRejected adds a registration request
   Wait until modal overlay disappear
+  Requests table contains row with user  UserNotRejected UserNotRejected
   Delete user  UserNotRejected UserNotRejected
 
 Pagination
@@ -56,9 +55,9 @@ Pagination
   Pagination button should be disabled  Previous
   Pagination button should be enabled  Next
   Pagination button should be enabled  Last
-  Page Should Contain  User1 Tester1 adds a registration request
+  Requests table contains row with user  User20 Tester20
   Click Element  link=2
-  Page Should Contain  User11 Tester11 adds a registration request
+  Requests table contains row with user  User10 Tester10
   Click Element  link=Last
   Pagination button should be enabled  First
   Pagination button should be enabled  Previous
@@ -76,3 +75,6 @@ Pagination button should be disabled  [Arguments]  ${text}
 Pagination button should be enabled  [Arguments]  ${text}
   ${result}=  Get Element Attribute  xpath=//li[./a[text()='${text}']]@class
   Should Not Contain  ${result}  disabled
+  
+Requests table contains row with user  [Arguments]  ${user}
+  Wait Until Page Contains Element  xpath=//table[@id='requestslist']/tbody/tr/td/a/strong[text()[normalize-space()='${user}']]
