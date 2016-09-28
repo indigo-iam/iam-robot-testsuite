@@ -46,15 +46,22 @@ Some useful option are:
   -t "Test name"       : execute only the test named with "Test name"
 ```
 
-## Run with Docker
-This testsuite provides a Docker image for run the tests. All the needed files are located in _docker_ folder.
+## Run with Docker and Selenium Grid
+This testsuite provides a Docker image for run the tests in headless environments. 
+All the needed files are located in _docker_ folder.
 
-First, build the new image:
+First, start the Selenium Grid Hub with the two node:
 ```bash
+ $ docker/selenium-grid/selenium_grid.sh start
+```
+Then, build the testsuite image:
+```bash
+ $ cd docker
  $ ./build-image.sh
 ```
 This shell script creates a new docker image, named _italiangrid/iam-robot-testsuite_ in the local image repository.
-Then run the container:
+Then run the testsuite container.
+Be aware to linking the container to the same Docker network used for Selenium Grid.
 
 ```bash
  $ docker run italiangrid/iam-robot-testsuite:latest
@@ -84,11 +91,3 @@ For example:
 | REMOTE_URL           | False                                                        | URL of Selenium Grid Hub to use |
 
 
-#### Setup your own Selenium Grid Hub with Docker
-Bring on a Selenium Grid environment, with a hub and two nodes, one with Firefox, the other one with Google Chrome
-
-```bash
- $ docker run -d -p "4444:4444" --name selenium-hub selenium/hub
- $ docker run -d --link selenium-hub:hub selenium/node-firefox
- $ docker run -d --link selenium-hub:hub selenium/node-chrome
-```

@@ -1,16 +1,13 @@
 FROM docker.io/fedora:24
 
 ## Layer: base
-RUN dnf install -y python-pip wget unzip git firefox
+RUN dnf install -y python-pip wget unzip git
 
 ## Layer: RobotFramework
 RUN pip install --upgrade pip && \
     pip install robotframework && \
     pip install robotframework-selenium2library
 
-RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip && \
-    unzip /tmp/chromedriver.zip -d /usr/local/bin
-    
 ## Layer: tester
 RUN useradd -ms /bin/bash tester
 COPY files/run.sh /home/tester/
