@@ -49,6 +49,15 @@ Input OIDC Subject  [Arguments]  ${subject}
 Remove Open ID Account  [Arguments]  ${issuer}  ${subject}
   Click Element  xpath=//*[@id='oidc_account_list']/tbody/tr/td[text()='${subject}']/following-sibling::td//button
   Wait Until Page Contains  Remove Open ID Account
+  Wait Until ELement Is Enabled  id=btn-confirm
   Click Button  Remove Open ID Account
   Wait until modal overlay disappear
-  Wait Until Page Contains  Open ID Account ${issuer} - ${subject} has been removed successfully
+  Wait Until Page Contains  Open ID Account has been removed successfully
+
+Remove SAML Account  [Arguments]  ${idp}  ${userid}
+  Click Element  xpath=//*[@id='saml_account_list']/tbody/tr/td[text()='${idp}']/following-sibling::td[text()='${userId}']/..//button
+  Wait Until Page Contains  Remove SAML Account
+  Wait Until ELement Is Enabled  id=btn-confirm
+  Click Button  Remove SAML Account
+  Wait until modal overlay disappear
+  Wait Until Page Contains  SAML Account has been removed successfully
