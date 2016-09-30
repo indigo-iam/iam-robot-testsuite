@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 net_options=""
 
 if [ ! -z $DOCKER_NET_NAME ]; then
@@ -7,8 +9,8 @@ if [ ! -z $DOCKER_NET_NAME ]; then
 fi
 
 if [ ! -z $IAM_HOSTNAME ]; then
-	IAM_HOST=`docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' iam`
-	net_options="$net_options --add-host $IAM_HOSTNAME:$IAM_HOST"
+	iam_host=`docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' iam`
+	net_options="$net_options --add-host $IAM_HOSTNAME:$iam_host"
 fi
 
 function start(){
@@ -16,7 +18,7 @@ function start(){
 	docker run -d -p "4444:4444" $net_options --name selenium-hub --hostname selenium-hub selenium/hub
 	
 	start_ts=$(date +%s)
-	timeout=300
+	timeout=100
 	sleeped=0
 	
 	while true; do
@@ -28,7 +30,13 @@ function start(){
 	        break
 	    fi
 	    echo "Waiting for Hub..."
-	    sleep 2
+	    sleep 5
+	    
+	    sleeped=$((sleeped+5))
+	    if [ $sleeped -ge $timeout  ]; then
+	    	echo "Timeout!"
+	    	exit 1
+		fi
 	done
 	
 	echo "Starting Chrome node..."
