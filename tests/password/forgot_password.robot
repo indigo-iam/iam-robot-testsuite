@@ -17,4 +17,4 @@ Submit change password request
   Input text  id=email  tester@example.it
   Click Button  Submit
   Wait Until Page Contains  Done!
-  Click Button  Cancel
+  Click Button  name=dismiss
