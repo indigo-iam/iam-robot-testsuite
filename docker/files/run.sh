@@ -2,7 +2,7 @@
 
 set -xe
 
-TESTSUITE_REPO="${TESTSUITE_REPO:-https://github.com/marcocaberletti/iam-robot-testsuite.git}"
+TESTSUITE_REPO="${TESTSUITE_REPO:-https://github.com/indigo-iam/iam-robot-testsuite.git}"
 TESTSUITE_BRANCH="${TESTSUITE_BRANCH:-master}"
 OUTPUT_REPORTS="${OUTPUT_REPORTS:-reports}"
 
