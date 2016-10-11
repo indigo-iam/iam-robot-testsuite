@@ -17,7 +17,7 @@ sleeped=0
 
 set +e
 while true; do
-    (curl --get $IAM_BASE_URL) >/dev/null 2>&1
+    (curl -k --get $IAM_BASE_URL) >/dev/null 2>&1
     result=$?
     if [[ $result -eq 0 ]]; then
         end_ts=$(date +%s)
@@ -43,7 +43,7 @@ if [ ! -z $REMOTE_URL ]; then
 	sleeped=0
 	set +e
 	while true; do
-	    (curl --get $REMOTE_URL) >/dev/null 2>&1
+	    (curl -k --get $REMOTE_URL) >/dev/null 2>&1
 	    result=$?
 	    if [[ $result -eq 0 ]]; then
 	        end_ts=$(date +%s)
