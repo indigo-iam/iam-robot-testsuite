@@ -16,29 +16,8 @@ function start(){
 	
 	echo "Starting Hub..."
 	docker run -d -p "4444:4444" $net_options --name selenium-hub --hostname selenium-hub selenium/hub
-	hub_ip=`docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' selenium-hub`
 	
-	start_ts=$(date +%s)
-	timeout=100
-	sleeped=0
-	
-	while true; do
-	    (echo > /dev/tcp/$hub_ip/4444) >/dev/null 2>&1
-	    result=$?
-	    if [[ $result -eq 0 ]]; then
-	        end_ts=$(date +%s)
-	        echo "Selenium Hub is available after $((end_ts - start_ts)) seconds"
-	        break
-	    fi
-	    echo "Waiting for Hub..."
-	    sleep 2
-	    
-	    sleeped=$((sleeped+2))
-	    if [ $sleeped -ge $timeout ]; then
-	    	echo "Timeout!"
-	    	exit 1
-		fi
-	done
+	sleep 5
 	
 	echo "Starting Chrome node..."
 	docker run -d $net_options -e HUB_PORT_4444_TCP_ADDR=selenium-hub --name node-chrome selenium/node-chrome
