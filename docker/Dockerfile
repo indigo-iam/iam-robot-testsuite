@@ -1,7 +1,10 @@
-FROM docker.io/fedora:24
+FROM docker.io/centos:7
 
 ## Layer: base
-RUN dnf install -y python-pip wget unzip git
+RUN yum install -y epel-release && \
+    yum clean all && \
+    yum makecache
+RUN yum install -y python-pip git curl
 
 ## Layer: RobotFramework
 RUN pip install --upgrade pip && \
