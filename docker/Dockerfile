@@ -4,7 +4,7 @@ FROM docker.io/centos:7
 RUN yum install -y epel-release && \
     yum clean all && \
     yum makecache
-RUN yum install -y python-pip git
+RUN yum install -y python-pip git curl
 
 ## Layer: RobotFramework
 RUN pip install --upgrade pip && \
