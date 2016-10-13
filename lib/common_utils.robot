@@ -1,7 +1,7 @@
 *** Keywords ***
 Setup
   Set Window Size  1200  800
-  Set Selenium Timeout  10
+  Set Selenium Timeout  ${TIMEOUT}
   Set Selenium Speed  ${SPEED}
 
 Go to IAM

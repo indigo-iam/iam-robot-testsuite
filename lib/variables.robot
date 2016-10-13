@@ -6,3 +6,4 @@ ${ADMIN_PASSWORD}  password
 ${BROWSER}         firefox
 ${SPEED}           0.1
 ${REMOTE_URL}      ${EMPTY}
+${TIMEOUT}         10

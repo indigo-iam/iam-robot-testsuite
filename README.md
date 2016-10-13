@@ -12,6 +12,7 @@ This testsuite has some customizable variables. They are the following:
 | BROWSER      | firefox               | Browser to use for tests |
 | IAM_BASE_URL | http://localhost:8080 | IAM endpoint to test |
 | REMOTE_URL   | False                 | URL of Selenium Grid Hub |
+| TIMEOUT      | 10                    | Time, in seconds, before after that a waiting keyword fails |
 
 
 ## Run manually
@@ -89,5 +90,4 @@ For example:
 | BROWSER              | firefox                                                      | Browser to use for tests |
 | IAM_BASE_URL         | http://localhost:8080                                        | IAM endpoint to test |
 | REMOTE_URL           | False                                                        | URL of Selenium Grid Hub to use |
-
-
+| TIMEOUT              | 10                                                           | Time, in seconds, after that a keyword fails |
