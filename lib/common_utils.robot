@@ -5,7 +5,7 @@ Setup
   Set Selenium Speed  ${SPEED}
   
 Generate capabilities configuration
-  ${DESIRED_CAPABILITIES}=  Create Dictionary  acceptSslCerts=true
+  ${DESIRED_CAPABILITIES}=  Create Dictionary  acceptSslCerts=True
 
 Go to IAM
   Generate capabilities configuration
