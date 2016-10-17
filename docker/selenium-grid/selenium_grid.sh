@@ -2,6 +2,8 @@
 
 set -x
 
+DOCKER_REGISTRY_HOST=${DOCKER_REGISTRY_HOST:-"cloud-vm128.cloud.cnaf.infn.it"}
+
 function start(){
 	net_options=""
 	node_options=""
@@ -26,7 +28,7 @@ function start(){
 	echo "Starting Chrome node..."
 	docker run -d $net_options $node_options --name node-chrome selenium/node-chrome
 	echo "Starting Firefox node..."
-	docker run -d $net_options $node_options --name node-firefox -v `readlink -fz $(dirname $0)`/files/generate_config:/opt/selenium/generate_config selenium/node-firefox
+	docker run -d $net_options $node_options --name node-firefox $DOCKER_REGISTRY_HOST/italiangrid/selenium-node-firefox
 }
 
 function stop(){
