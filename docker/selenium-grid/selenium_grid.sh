@@ -28,7 +28,7 @@ function start(){
 	echo "Starting Chrome node..."
 	docker run -d $net_options $node_options --name node-chrome selenium/node-chrome
 	echo "Starting Firefox node..."
-	docker run -d $net_options $node_options --name node-firefox selenium/node-firefox:2.53.1-beryllium
+	docker run -d $net_options $node_options --name node-firefox selenium/node-firefox:2.53.0
 }
 
 function stop(){

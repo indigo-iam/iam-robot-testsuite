@@ -18,7 +18,7 @@ sleeped=0
 
 set +e
 while true; do
-    (curl -k --get $IAM_BASE_URL) >/dev/null 2>&1
+    (curl -kIs --get $IAM_BASE_URL/login | grep -q "200 OK") 2>&1
     result=$?
     if [[ $result -eq 0 ]]; then
         end_ts=$(date +%s)
@@ -43,8 +43,9 @@ if [ ! -z $REMOTE_URL ]; then
 	timeout=300
 	sleeped=0
 	set +e
+	url=`echo $REMOTE_URL | sed 's/wd\/hub//g'`
 	while true; do
-	    (curl -k --get $REMOTE_URL) >/dev/null 2>&1
+	    (curl -kIs --get $url | grep -q "200 OK") 2>&1
 	    result=$?
 	    if [[ $result -eq 0 ]]; then
 	        end_ts=$(date +%s)
