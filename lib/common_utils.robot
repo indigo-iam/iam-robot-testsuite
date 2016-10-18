@@ -14,6 +14,7 @@ Go to IAM
 
 Go to Indigo dashboard
   Click Link  link=New Admin Dashboard
+  Wait until modal overlay disappear
 
 Click Back to Home
   Click Link  link=Back to Home Page
@@ -27,6 +28,7 @@ Wait until modal overlay disappear
 
 Click menu navigation entry  [Arguments]  ${entry}
   Wait Until Page Contains Element  xpath=//ul[@class='sidebar-menu']/li/a/span[text()='${entry}']
+  Wait until modal overlay disappear
   Click Element  xpath=//ul[@class='sidebar-menu']/li/a/span[text()='${entry}']
 
 Go to home page
