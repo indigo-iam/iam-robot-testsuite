@@ -9,6 +9,7 @@ OUTPUT_REPORTS="${OUTPUT_REPORTS:-reports}"
 BROWSER="${BROWSER:-firefox}"
 IAM_BASE_URL="${IAM_BASE_URL:-http://localhost:8080}"
 REMOTE_URL="${REMOTE_URL:-}"
+TIMEOUT="${TIMEOUT:-10}"
 
 ## Waiting for IAM
 start_ts=$(date +%s)
@@ -17,7 +18,7 @@ sleeped=0
 
 set +e
 while true; do
-    (curl -k --get $IAM_BASE_URL) >/dev/null 2>&1
+    (curl -kIs --get $IAM_BASE_URL/login | grep -q "200 OK") 2>&1
     result=$?
     if [[ $result -eq 0 ]]; then
         end_ts=$(date +%s)
@@ -42,8 +43,9 @@ if [ ! -z $REMOTE_URL ]; then
 	timeout=300
 	sleeped=0
 	set +e
+	url=`echo $REMOTE_URL | sed 's/wd\/hub//g'`
 	while true; do
-	    (curl -k --get $REMOTE_URL) >/dev/null 2>&1
+	    (curl -kIs --get $url | grep -q "200 OK") 2>&1
 	    result=$?
 	    if [[ $result -eq 0 ]]; then
 	        end_ts=$(date +%s)
@@ -78,6 +80,7 @@ pybot --pythonpath .:lib \
 	--variable BROWSER:$BROWSER \
 	--variable IAM_BASE_URL:$IAM_BASE_URL \
 	--variable REMOTE_URL:$REMOTE_URL \
+	--variable TIMEOUT:$TIMEOUT \
 	-d $OUTPUT_REPORTS tests/
 
 echo "Done."

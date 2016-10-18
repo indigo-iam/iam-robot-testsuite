@@ -72,7 +72,7 @@ Pagination
   :FOR  ${index}  IN RANGE  01  21
   \  Delete user  User${index} Tester${index}
 
-*** Keyword ***
+*** Keywords ***
 
 Pagination button should be disabled  [Arguments]  ${text}
   ${result}=  Get Element Attribute  xpath=//li[./a[text()='${text}']]@class
