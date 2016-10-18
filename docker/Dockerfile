@@ -1,14 +1,12 @@
-FROM docker.io/centos:7
+FROM docker.io/fedora:latest
 
 ## Layer: base
-RUN yum install -y epel-release && \
-    yum clean all && \
-    yum makecache
-RUN yum install -y python-pip git curl
+RUN dnf install -y python-pip git curl
 
 ## Layer: RobotFramework
 RUN pip install --upgrade pip && \
     pip install robotframework && \
+    pip install selenium==2.53.6 && \
     pip install robotframework-selenium2library
 
 ## Layer: tester
