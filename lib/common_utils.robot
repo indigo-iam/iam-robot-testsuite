@@ -1,15 +1,20 @@
 *** Keywords ***
 Setup
   Set Window Size  1200  800
-  Set Selenium Timeout  10
+  Set Selenium Timeout  ${TIMEOUT}
   Set Selenium Speed  ${SPEED}
+  
+Generate capabilities configuration
+  ${DESIRED_CAPABILITIES}=  Create Dictionary  acceptSslCerts=True
 
 Go to IAM
-  Open Browser  ${IAM_BASE_URL}  browser=${BROWSER}  remote_url=${REMOTE_URL}
+  Generate capabilities configuration
+  Open Browser  ${IAM_BASE_URL}  browser=${BROWSER}  remote_url=${REMOTE_URL}  desired_capabilities=${DESIRED_CAPABILITIES}
   Setup
 
 Go to Indigo dashboard
   Click Link  link=New Admin Dashboard
+  Wait until modal overlay disappear
 
 Click Back to Home
   Click Link  link=Back to Home Page
@@ -23,6 +28,7 @@ Wait until modal overlay disappear
 
 Click menu navigation entry  [Arguments]  ${entry}
   Wait Until Page Contains Element  xpath=//ul[@class='sidebar-menu']/li/a/span[text()='${entry}']
+  Wait until modal overlay disappear
   Click Element  xpath=//ul[@class='sidebar-menu']/li/a/span[text()='${entry}']
 
 Go to home page
