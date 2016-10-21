@@ -1,5 +1,6 @@
 *** Keywords ***
 Open registration form
+  Wait Until Page Contains Element  link=Register a new account
   Click Link  link=Register a new account
   Wait Until Page Contains  User registration form
   
