@@ -6,7 +6,9 @@ Input password  [Arguments]  ${password}
   Input Text  id=password  ${password}
 
 Login as admin
+  Wait Until Page Contains Element  id=username
   Input username  ${ADMIN_USER}
+  Wait Until Page Contains Element  id=password
   Input password  ${ADMIN_PASSWORD}
   Click Element  xpath=//input[@value='Login']
   Wait Until Page Contains  Welcome!
