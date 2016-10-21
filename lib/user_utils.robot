@@ -40,11 +40,13 @@ Close x509 certificate dialog
   Click Element  id=modal-btn-cancel
   Wait until modal overlay disappear
 
-Input OIDC Issuer  [Arguments]  ${issuer}
-  Input Text  id=add-oidc-issuer  ${issuer}
+Open edit user dialog
+  Click Element  name=edit-user-info
+  Wait Until Page Contains  User update form
 
-Input OIDC Subject  [Arguments]  ${subject}
-  Input Text  id=add-oidc-subject  ${subject}
+Close edit user dialog
+  Click Element  id=modal-btn-cancel
+  Wait until modal overlay disappear
 
 Remove Open ID Account  [Arguments]  ${issuer}  ${subject}
   Click Element  xpath=//*[@id='oidc_account_list']/tbody/tr/td[text()='${subject}']/following-sibling::td//button
