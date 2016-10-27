@@ -16,6 +16,10 @@ Go to Indigo dashboard
   Click Link  link=New Admin Dashboard
   Wait until modal overlay disappear
 
+View Profile Information
+  Click Link  link=View Profile Information
+  Wait until modal overlay disappear
+
 Click Back to Home
   Click Link  link=Back to Home Page
   
