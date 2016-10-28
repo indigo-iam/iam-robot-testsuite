@@ -66,3 +66,6 @@ Go to group page  [Arguments]  ${name}
   Find group in groups page  ${name}
   Click Element  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${name}']
   Wait Until Page Contains  Members
+
+Wait Until Element Is Disabled  [Arguments]  ${id}
+  Wait For Condition  return document.getElementById("${id}").getAttribute("disabled") == 'disabled' 
