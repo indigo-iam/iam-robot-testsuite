@@ -10,6 +10,7 @@ BROWSER="${BROWSER:-firefox}"
 IAM_BASE_URL="${IAM_BASE_URL:-http://localhost:8080}"
 REMOTE_URL="${REMOTE_URL:-}"
 TIMEOUT="${TIMEOUT:-10}"
+IMPLICIT_WAIT="${IMPLICIT_WAIT:-2}"
 
 ## Waiting for IAM
 start_ts=$(date +%s)
@@ -81,6 +82,7 @@ pybot --pythonpath .:lib \
 	--variable IAM_BASE_URL:$IAM_BASE_URL \
 	--variable REMOTE_URL:$REMOTE_URL \
 	--variable TIMEOUT:$TIMEOUT \
+	--variable IMPLICIT_WAIT:$IMPLICIT_WAIT \
 	-d $OUTPUT_REPORTS tests/
 
 echo "Done."

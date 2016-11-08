@@ -13,9 +13,10 @@ This testsuite has some customizable variables. They are the following:
 | IAM_BASE_URL   | http://localhost:8080 | IAM endpoint to test |
 | REMOTE_URL     | False                 | URL of Selenium Grid Hub |
 | TIMEOUT        | 10                    | Time, in seconds, before after that a waiting keyword fails |
+| IMPLICIT_WAIT  | 2                     | Time, in seconds, meanwhile Selenium polls the DOM trying to find an element it isn't immediately available |
 | SPEED          | 0.1                   | Delay, in seconds, between two Selenium actions |
 | ADMIN_USER     | admin                 | Username of IAM admin user |
-| ADMIN_PASSWORD | password            | Password of IAM admin user |
+| ADMIN_PASSWORD | password              | Password of IAM admin user |
 
 
 
@@ -105,3 +106,4 @@ Moreover, the Selenium nodes must can resolve IAM endpoint.
 | IAM_BASE_URL         | http://localhost:8080                                        | IAM endpoint to test |
 | REMOTE_URL           | False                                                        | URL of Selenium Grid Hub to use |
 | TIMEOUT              | 10                                                           | Time, in seconds, after that a keyword fails |
+| IMPLICIT_WAIT        | 2                                                            | Time, in seconds, meanwhile Selenium polls the DOM trying to find an element it isn't immediately available |

@@ -19,7 +19,6 @@ Logout from Mitre dashboard
   Wait Until Page Contains  INDIGO IAM server-Log In
  
 Logout from Indigo dashboard
-  Sleep  3s  Syncronization issue
   Click Element  xpath=//li[@class='dropdown user user-menu']/a[@class='dropdown-toggle']/img[@class='user-image']
   Wait Until Page Contains  Sign out
   Click Link  link=Sign out

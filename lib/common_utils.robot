@@ -2,6 +2,7 @@
 Setup
   Set Window Size  1200  800
   Set Selenium Timeout  ${TIMEOUT}
+  Set Selenium Implicit Wait  ${IMPLICIT_WAIT}
   Set Selenium Speed  ${SPEED}
   
 Generate capabilities configuration
