@@ -64,6 +64,3 @@ Go to group page  [Arguments]  ${name}
   Find group in groups page  ${name}
   Click Element  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${name}']
   Wait until modal overlay disappear
-  Wait Until Page Contains Element  id=userslist
-  Wait Until Page Contains Element   xpath=//*[@id='userslist']/tbody/tr/td[text()='1']
-  Table Row Should Contain  userslist  1  test
