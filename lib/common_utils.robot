@@ -1,6 +1,6 @@
 *** Keywords ***
 Setup
-  Set Window Size  1200  800
+  Set Window Size  1200  1000
   Set Selenium Timeout  ${TIMEOUT}
   Set Selenium Implicit Wait  ${IMPLICIT_WAIT}
   Set Selenium Speed  ${SPEED}
@@ -61,7 +61,7 @@ Go to user page  [Arguments]  ${name}
   Find user in users page  ${name}
   Click Element  xpath=//*[@id='userslist']/tbody/tr/td/a[text()='${name}']
   Wait until modal overlay disappear
-  Wait Until Page Contains  ${name} - Profile Page
+  Wait Until Page Contains  User - ${name}
 
 Go to group page  [Arguments]  ${name}
   Go to groups page
