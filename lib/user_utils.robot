@@ -41,7 +41,7 @@ Close x509 certificate dialog
   Wait until modal overlay disappear
 
 Open edit user dialog
-  Click Element  name=edit-user-info
+  Click Element  name=edit-user-btn
   Wait Until Page Contains  User update form
 
 Close edit user dialog
