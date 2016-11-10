@@ -17,6 +17,10 @@ Go to Indigo dashboard
   Click Link  link=New Admin Dashboard
   Wait until modal overlay disappear
 
+View Profile Information
+  Click Link  link=View Profile Information
+  Wait until modal overlay disappear
+
 Click Back to Home
   Click Link  link=Back to Home Page
   
@@ -64,3 +68,7 @@ Go to group page  [Arguments]  ${name}
   Find group in groups page  ${name}
   Click Element  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${name}']
   Wait until modal overlay disappear
+  Wait Until Page Contains  Members
+
+Wait Until Element Is Disabled  [Arguments]  ${id}
+  Wait For Condition  return document.getElementById("${id}").getAttribute("disabled") == 'disabled' 

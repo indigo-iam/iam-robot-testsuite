@@ -13,6 +13,14 @@ Login as admin
   Click Element  xpath=//input[@value='Login']
   Wait Until Page Contains  Welcome!
 
+Login as user  [Arguments]  ${username}  ${password}
+  Wait Until Page Contains Element  id=username
+  Input username  ${username}
+  Wait Until Page Contains Element  id=password
+  Input password  ${password}
+  Click Element  xpath=//input[@value='Login']
+  Wait Until Page Contains  Welcome!
+
 Logout from Mitre dashboard
   Click Element  id=userButton
   Click Element  xpath=//a[@class='logoutLink']
