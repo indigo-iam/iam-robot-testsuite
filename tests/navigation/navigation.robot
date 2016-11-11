@@ -41,7 +41,7 @@ Open group page
 Open group page with an empty group
   Go to group page  ${TEST_EMPTY_GROUP}
   Wait Until Page Contains Element  id=userslist
-  Page Should Contain  Members not found!
+  Page Should Contain  No members found for '${TEST_EMPTY_GROUP}' group.
 
 Open requests page
   Go to request management page
