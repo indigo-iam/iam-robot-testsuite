@@ -55,6 +55,8 @@ Delete user  [Arguments]  ${name}
   Wait until modal overlay disappear
   Wait Until Page Contains  has been removed successfully
   Clear search in users page
+  Wait Until Page Contains Element  id=userslist
+  Table Row Should Contain  userslist  10  Delete
 
 Get user uuid  [Arguments]  ${name}
   Find user in users page  ${name}
