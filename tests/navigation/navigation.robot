@@ -11,6 +11,7 @@ Test Teardown  Logout from Indigo dashboard
 
 ${TEST_USER}          Test User
 ${TEST_GROUP}         Production
+${TEST_EMPTY_GROUP}   Test-001
 
 *** Keywords ***
 
@@ -33,6 +34,14 @@ Open user page
 
 Open group page
   Go to group page  ${TEST_GROUP}
+  Wait Until Page Contains Element  id=userslist
+  Wait Until Page Contains Element   xpath=//*[@id='userslist']/tbody/tr/td[text()='1']
+  Table Row Should Contain  userslist  1  test
+
+Open group page with an empty group
+  Go to group page  ${TEST_EMPTY_GROUP}
+  Wait Until Page Contains Element  id=userslist
+  Page Should Contain  No members found for '${TEST_EMPTY_GROUP}' group.
 
 Open requests page
   Go to request management page
