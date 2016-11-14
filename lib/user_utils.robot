@@ -26,6 +26,7 @@ Close SSH Key account dialog
 
 Open add SAML account dialog  [Arguments]  ${user}
   Focus  name=btn-add-samlid
+  Wait Until Element Is Visible  name=btn-add-samlid
   Click Button  name=btn-add-samlid
   Wait Until Page Contains  Add SAML Account to ${user}
 
@@ -35,6 +36,7 @@ Close add SAML account dialog
 
 Open add x509 certificate dialog  [Arguments]  ${user}
   Focus  name=btn-add-x509cert
+  Wait Until Element Is Visible  name=btn-add-x509cert
   Click Button  name=btn-add-x509cert
   Wait Until Page Contains  Add x509 Certificate to ${user}
 
