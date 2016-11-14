@@ -33,7 +33,6 @@ Add and remove Open ID Connect account to user
   Remove Open ID Account  ${TEST_OIDC_ISSUER}  ${TEST_OIDC_SUBJECT}
 
 Add and remove SAML account to user
-  Focus  name=btn-add-samlid
   Open add SAML account dialog  ${TEST_USER}
   Input SAML Idp  ${TEST_SAML_IDPID}
   Input SAML UserId  ${TEST_SAML_USERID}
@@ -46,7 +45,6 @@ Add and remove SAML account to user
   Remove SAML Account  ${TEST_SAML_IDPID}  ${TEST_SAML_USERID}
 
 Add and remove x509 certificate to user
-  Focus  name=btn-add-x509cert
   Open add x509 certificate dialog  ${TEST_USER}
   Input x509 label  ${TEST_X509_LABEL}
   Input x509 certificate  ${TEST_X509_CERT}
