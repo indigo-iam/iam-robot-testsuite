@@ -41,6 +41,7 @@ Add and remove SAML account to user
   Wait until modal overlay disappear
   Wait Until Page Contains  ${TEST_SAML_IDPID}
   Wait Until Page Contains  ${TEST_SAML_USERID}
+  Focus  name=btn-add-samlid
   Remove SAML Account  ${TEST_SAML_IDPID}  ${TEST_SAML_USERID}
 
 Add and remove x509 certificate to user
@@ -51,6 +52,7 @@ Add and remove x509 certificate to user
   Click Element  id=modal-btn-confirm
   Wait until modal overlay disappear
   Wait Until Page Contains Element  xpath=//table[@id='x509_list']/tbody/tr/td[text()='${TEST_X509_LABEL}']
+  Focus  name=btn-add-x509cert
   Remove x509 certificate  ${TEST_X509_LABEL}
 
 *** Keywords ***

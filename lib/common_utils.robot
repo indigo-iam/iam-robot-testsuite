@@ -1,6 +1,6 @@
 *** Keywords ***
 Setup
-  Set Window Size  1200  800
+  Set Window Size  1200  1000
   Set Selenium Timeout  ${TIMEOUT}
   Set Selenium Implicit Wait  ${IMPLICIT_WAIT}
   Set Selenium Speed  ${SPEED}
@@ -15,6 +15,10 @@ Go to IAM
 
 Go to Indigo dashboard
   Click Link  link=New Admin Dashboard
+  Wait until modal overlay disappear
+
+View Profile Information
+  Click Link  link=View Profile Information
   Wait until modal overlay disappear
 
 Click Back to Home
@@ -57,10 +61,14 @@ Go to user page  [Arguments]  ${name}
   Find user in users page  ${name}
   Click Element  xpath=//*[@id='userslist']/tbody/tr/td/a[text()='${name}']
   Wait until modal overlay disappear
-  Wait Until Page Contains  ${name} - Profile Page
+  Wait Until Page Contains  User - ${name}
 
 Go to group page  [Arguments]  ${name}
   Go to groups page
   Find group in groups page  ${name}
   Click Element  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${name}']
   Wait until modal overlay disappear
+  Wait Until Page Contains  Members
+
+Wait Until Element Is Disabled  [Arguments]  ${id}
+  Wait For Condition  return document.getElementById("${id}").getAttribute("disabled") == 'disabled' 

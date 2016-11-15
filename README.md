@@ -66,6 +66,13 @@ First, start the Selenium Grid Hub with the two node:
 The command above brings on a Selenium Hub, listen on TCP port 4444 ad attaches its two nodes, one with Chrome and the other with Firefox.
 Verify the selenium hub status pointing a browser to `http://localhost:4444/grid/console`.
 
+If you want connect Selenium Grid to an existing Docker network and inject an hostname into browser nodes, 
+export the variables `DOCKER_NET_NAME` and `IAM_HOSTNAME`. For examples:
+
+```bash
+$ IAM_HOSTNAME=iam.local.io DOCKER_NET_NAME=iam_default sh docker/selenium-grid/selenium_grid.sh start
+```
+
 Then, build the testsuite image:
 ```bash
  $ cd docker
