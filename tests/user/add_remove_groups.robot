@@ -25,6 +25,7 @@ Add group to user
   Wait Until Element Is Enabled  name=modal-btn-confirm
   Click Button  name=modal-btn-confirm
   Wait Until Page Contains  Test-001
+  Delete Group  Test-001
 
 Add groups to user
   Go to user page  ${TEST_USER_GIVENNAME} ${TEST_USER_SURNAME}
@@ -40,6 +41,8 @@ Add groups to user
   Click Button  name=modal-btn-confirm
   Wait Until Page Contains  Test-001
   Wait Until Page Contains  Test-002
+  Delete Group  Test-001
+  Delete Group  Test-002
 
 
 *** Keywords ***
@@ -57,4 +60,11 @@ Add Remove Groups Teardown
 
 Input Group  [Arguments]  ${group}
   Input Text  xpath=//input  ${group}
-  
+
+Delete Group  [Arguments]  ${group}
+  Wait Until Element Is Visible  id=groupslist
+  Wait Until Page Contains  ${group}
+  Click Button  xpath=//table[@id='groupslist']//a[text()='${group}']/../following-sibling::td//button
+  Wait Until Page Contains Element   xpath=//*[@id='btn-confirm']
+  Click Button  Remove user from group
+  Wait until modal overlay disappear
