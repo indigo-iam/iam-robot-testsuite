@@ -13,7 +13,6 @@ ${TEST_NEWPASSWORD}       newpassword
 
 Change password logout and login
   Login as user  ${TEST_USERNAME}  ${TEST_PASSWORD}
-  View Profile Information
   Open change password dialog
   Compile form  ${TEST_PASSWORD}  ${TEST_NEWPASSWORD}  ${TEST_NEWPASSWORD}
   Check no invalid errors
@@ -21,7 +20,6 @@ Change password logout and login
   Wait until modal overlay disappear
   Logout from Indigo dashboard
   Login as user  ${TEST_USERNAME}  ${TEST_NEWPASSWORD}
-  View Profile Information
   Open change password dialog
   Compile form  ${TEST_NEWPASSWORD}  ${TEST_PASSWORD}  ${TEST_PASSWORD}
   Check no invalid errors
@@ -31,7 +29,6 @@ Change password logout and login
 
 Wrong password provided
   Login as user  ${TEST_USERNAME}  ${TEST_PASSWORD}
-  View Profile Information
   Open change password dialog
   Compile form  wrongPassword  ${TEST_NEWPASSWORD}  ${TEST_NEWPASSWORD}
   Check no invalid errors
@@ -42,7 +39,6 @@ Wrong password provided
 
 Minimum length required for new password
   Login as user  ${TEST_USERNAME}  ${TEST_PASSWORD}
-  View Profile Information
   Open change password dialog
   Compile form  ${TEST_PASSWORD}  XXX  XXX
   Check minlength is required
@@ -52,7 +48,6 @@ Minimum length required for new password
 
 Confirm password not match
   Login as user  ${TEST_USERNAME}  ${TEST_PASSWORD}
-  View Profile Information
   Open change password dialog
   Compile form  ${TEST_PASSWORD}  ${TEST_NEWPASSWORD}  ${TEST_NEWPASSWORD}XXX
   Check confirm password matching is required

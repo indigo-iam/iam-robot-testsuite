@@ -11,7 +11,7 @@ Login as admin
   Wait Until Page Contains Element  id=password
   Input password  ${ADMIN_PASSWORD}
   Click Element  xpath=//input[@value='Login']
-  Wait Until Page Contains  Welcome!
+  Wait Until Page Contains  Admin User
 
 Login as user  [Arguments]  ${username}  ${password}
   Wait Until Page Contains Element  id=username
@@ -19,7 +19,7 @@ Login as user  [Arguments]  ${username}  ${password}
   Wait Until Page Contains Element  id=password
   Input password  ${password}
   Click Element  xpath=//input[@value='Login']
-  Wait Until Page Contains  Welcome!
+  Wait Until Page Contains  Home
 
 Logout from Mitre dashboard
   Click Element  id=userButton
@@ -30,4 +30,4 @@ Logout from Indigo dashboard
   Click Element  xpath=//li[@class='dropdown user user-menu']/a[@class='dropdown-toggle']/img[@class='user-image']
   Wait Until Page Contains  Sign out
   Click Link  link=Sign out
-  Wait Until Page Contains  INDIGO IAM server-Log In
+  Wait Until Page Contains Element  id=login-form
