@@ -1,3 +1,4 @@
 reports/
 .project
 *.md.html
+*.DS_Store
