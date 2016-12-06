@@ -14,8 +14,7 @@ Go to IAM
   Setup
 
 Go to Indigo dashboard
-  Click Link  link=New Admin Dashboard
-  Wait until modal overlay disappear
+  No Operation
 
 View Profile Information
   Click Link  link=View Profile Information
@@ -61,7 +60,7 @@ Go to user page  [Arguments]  ${name}
   Find user in users page  ${name}
   Click Element  xpath=//*[@id='userslist']/tbody/tr/td/a[text()='${name}']
   Wait until modal overlay disappear
-  Wait Until Page Contains  User - ${name}
+  Wait Until Page Contains Element  id=userprofilepage
 
 Go to group page  [Arguments]  ${name}
   Go to groups page

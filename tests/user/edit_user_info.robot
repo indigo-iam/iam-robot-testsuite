@@ -32,7 +32,7 @@ Edit all user's info
   Go to users page
   Create User  ${TEST_USER_GIVENNAME}  ${TEST_USER_FAMILYNAME}  ${TEST_USER_EMAIL}  ${TEST_USER_USERNAME}
   Go to user page  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
-  Open edit user dialog
+  Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
   Input Given Name  ${TEST_USER_GIVENNAME_MOD}
   Input Family Name  ${TEST_USER_FAMILYNAME_MOD}
@@ -50,7 +50,7 @@ Edit user's name
   Go to users page
   Create User  ${TEST_USER_GIVENNAME}  ${TEST_USER_FAMILYNAME}  ${TEST_USER_EMAIL}  ${TEST_USER_USERNAME}
   Go to user page  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
-  Open edit user dialog
+  Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
   Input Given Name  ${TEST_USER_GIVENNAME_INVALID}
   Wait Until Page Contains  Minimum length required is 3
@@ -66,7 +66,7 @@ Edit user's family name
   Go to users page
   Create User  ${TEST_USER_GIVENNAME}  ${TEST_USER_FAMILYNAME}  ${TEST_USER_EMAIL}  ${TEST_USER_USERNAME}
   Go to user page  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
-  Open edit user dialog
+  Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
   Input Family Name  ${TEST_USER_FAMILYNAME_INVALID}
   Wait Until Page Contains  Minimum length required is 3
@@ -82,7 +82,7 @@ Edit user's email
   Go to users page
   Create User  ${TEST_USER_GIVENNAME}  ${TEST_USER_FAMILYNAME}  ${TEST_USER_EMAIL}  ${TEST_USER_USERNAME}
   Go to user page  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
-  Open edit user dialog
+  Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
   Input Email  ${TEST_USER_EMAIL_INVALID}
   Wait Until Page Contains  This is not a valid email
@@ -100,7 +100,7 @@ Edit user's username
   Go to users page
   Create User  ${TEST_USER_GIVENNAME}  ${TEST_USER_FAMILYNAME}  ${TEST_USER_EMAIL}  ${TEST_USER_USERNAME}
   Go to user page  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
-  Open edit user dialog
+  Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
   Input Username  ${TEST_USER_USERNAME_INVALID}
   Wait Until Page Contains  Minimum length required is 3
@@ -118,7 +118,7 @@ Edit user's picture
   Go to users page
   Create User  ${TEST_USER_GIVENNAME}  ${TEST_USER_FAMILYNAME}  ${TEST_USER_EMAIL}  ${TEST_USER_USERNAME}
   Go to user page  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
-  Open edit user dialog
+  Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
   Input Picture  ${TEST_USER_PICTURE_INVALID}
   Wait Until Page Contains  This field is invalid

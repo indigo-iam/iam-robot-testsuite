@@ -38,7 +38,7 @@ Submit a new registration request
   Input Text  id=notes     Very short notes for the admin
   Wait Until Element Is Enabled  name=register
   Click Element  name=register
-  Wait Until Page Contains  Request submission success
+  Wait Until Page Contains  Request submitted successfully
   Click Link  link=Back to Login Page
   Login as admin
   Go to Indigo dashboard

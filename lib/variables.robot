@@ -8,4 +8,4 @@ ${SPEED}                 0.1
 ${REMOTE_URL}            ${EMPTY}
 ${TIMEOUT}               10
 ${DESIRED_CAPABILITIES}  ${EMPTY}
-${IMPLICIT_WAIT}         2
+${IMPLICIT_WAIT}         1
