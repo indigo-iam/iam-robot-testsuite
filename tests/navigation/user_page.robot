@@ -28,14 +28,6 @@ Open and close add OpenID Connect Account dialog
   Open add Open ID Connect account dialog  ${TEST_USER}
   Close Open ID Connect account dialog
 
-Open and close add SSH Key dialog
-  Open add SSH Key account dialog  ${TEST_USER}
-  Close SSH Key account dialog
-
 Open and close add SAML Account dialog
   Open add SAML account dialog  ${TEST_USER}
   Close add SAML account dialog
-
-Open and close add x509 certificate dialog
-  Open add x509 certificate dialog  ${TEST_USER}
-  Close x509 certificate dialog

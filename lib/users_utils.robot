@@ -1,7 +1,8 @@
 *** Keywords ***
 
 Open Add User Dialog
-  Click Button  xpath=//div[@class='box-footer']//button
+  Wait Until Page Contains Element  css=.box-footer
+  Click Button  id=add-user-btn
   Wait Until Page Contains  User creation form
 
 Close Add User Dialog
