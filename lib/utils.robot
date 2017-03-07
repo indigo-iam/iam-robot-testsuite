@@ -1,5 +1,8 @@
 *** Settings ***
 Library  Selenium2Library
+Library  OperatingSystem
+Library  Collections
+Library  HttpLibrary.HTTP
 
 Resource  common_utils.robot
 Resource  login_utils.robot

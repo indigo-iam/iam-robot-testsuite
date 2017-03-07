@@ -4,13 +4,21 @@ set -xe
 
 TESTSUITE_REPO="${TESTSUITE_REPO:-https://github.com/indigo-iam/iam-robot-testsuite.git}"
 TESTSUITE_BRANCH="${TESTSUITE_BRANCH:-master}"
+TESTSUITE_OPTS="${TESTSUITE_OPTS:-}"
 OUTPUT_REPORTS="${OUTPUT_REPORTS:-reports}"
 
 BROWSER="${BROWSER:-firefox}"
 IAM_BASE_URL="${IAM_BASE_URL:-http://localhost:8080}"
+IAM_TEST_CLIENT_URL="${IAM_TEST_CLIENT_URL:-http://localhost:9090/iam-test-client}"
 REMOTE_URL="${REMOTE_URL:-}"
 TIMEOUT="${TIMEOUT:-10}"
 IMPLICIT_WAIT="${IMPLICIT_WAIT:-2}"
+ADMIN_USER="${ADMIN_USER:-admin}"
+ADMIN_PASSWORD="${ADMIN_PASSWORD:-password}"
+CLIENT_ID="${CLIENT_ID:-client-cred}"
+CLIENT_SECRET="${CLIENT_SECRET:-secret}"
+TOKEN_EXCHANGE_CLIENT_ID="${TOKEN_EXCHANGE_CLIENT_ID:-token-exchange-actor}"
+TOKEN_EXCHANGE_CLIENT_SECRET="${TOKEN_EXCHANGE_CLIENT_SECRET:-secret}"
 
 ## Waiting for IAM
 start_ts=$(date +%s)
@@ -67,15 +75,15 @@ fi
 
 
 ## Clone testsuite code
-echo "Clone iam-robot-testsuite repository ..."
-git clone $TESTSUITE_REPO
+if [ ! -d /home/tester/iam-robot-testsuite ]; then
+	echo "Clone iam-robot-testsuite repository ..."
+	git clone -b ${TESTSUITE_BRANCH} ${TESTSUITE_REPO} iam-robot-testsuite
+fi
 
-cd /home/tester/iam-robot-testsuite
-
-echo "Switch branch ..."
-git checkout $TESTSUITE_BRANCH
 
 ## Run
+cd /home/tester/iam-robot-testsuite
+
 echo "Run ..."
 pybot --pythonpath .:lib \
 	--variable BROWSER:$BROWSER \
@@ -83,6 +91,13 @@ pybot --pythonpath .:lib \
 	--variable REMOTE_URL:$REMOTE_URL \
 	--variable TIMEOUT:$TIMEOUT \
 	--variable IMPLICIT_WAIT:$IMPLICIT_WAIT \
-	-d $OUTPUT_REPORTS tests/
+	--variable IAM_TEST_CLIENT_URL:$IAM_TEST_CLIENT_URL \
+	--variable ADMIN_USER:$ADMIN_USER \
+	--variable ADMIN_PASSWORD:$ADMIN_PASSWORD \
+	--variable CLIENT_ID:$CLIENT_ID \
+	--variable CLIENT_SECRET:$CLIENT_SECRET \
+	--variable TOKEN_EXCHANGE_CLIENT_ID:$TOKEN_EXCHANGE_CLIENT_ID \
+	--variable TOKEN_EXCHANGE_CLIENT_SECRET:$TOKEN_EXCHANGE_CLIENT_SECRET \
+	-d $OUTPUT_REPORTS ${TESTSUITE_OPTS} tests/
 
 echo "Done."

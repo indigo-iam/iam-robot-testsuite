@@ -28,6 +28,7 @@ For run the testsuite, you need Robot Framework and Selenium. Install them with:
  $ sudo pip install robotframework
  $ sudo pip install selenium==2.53.6
  $ sudo pip install robotframework-selenium2library
+ $ sudo pip install robotframework-httplibrary
 ```
 
 By default, the testsuite run Selenium tests using Firefox web browser. If you want to use a different browser, you need to install

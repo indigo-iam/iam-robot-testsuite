@@ -1,0 +1,16 @@
+TESTSUITE_REPO=https://github.com/indigo-iam/iam-robot-testsuite.git
+TESTSUITE_BRANCH=develop
+TESTSUITE_OPTS=--include=test-client --include=token
+OUTPUT_REPORTS=reports
+BROWSER=firefox
+IAM_BASE_URL=https://iam.local.io
+IAM_TEST_CLIENT_URL=https://iam.local.io/iam-test-client
+REMOTE_URL=http://selenium-hub:4444/wd/hub
+TIMEOUT=10
+IMPLICIT_WAIT=2
+ADMIN_USER=admin
+ADMIN_PASSWORD=password
+CLIENT_ID=client-cred
+CLIENT_SECRET=secret
+TOKEN_EXCHANGE_CLIENT_ID=token-exchange-actor
+TOKEN_EXCHANGE_CLIENT_SECRET=secret
