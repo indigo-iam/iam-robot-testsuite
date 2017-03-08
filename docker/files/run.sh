@@ -27,7 +27,7 @@ sleeped=0
 
 set +e
 while true; do
-    (curl -kIs --get $IAM_BASE_URL/login | grep -q "200 OK") 2>&1
+    (curl -kIs --get $IAM_BASE_URL/login | egrep -q "200 OK|HTTP/2 200") 2>&1
     result=$?
     if [[ $result -eq 0 ]]; then
         end_ts=$(date +%s)
