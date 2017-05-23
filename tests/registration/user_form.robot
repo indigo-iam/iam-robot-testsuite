@@ -9,6 +9,7 @@ ${invalid_name}      xx
 ${invalid_surname}   xx
 ${invalid_email}     xx
 ${invalid_username}  xx
+${invalid_notes}     ${SPACE}
 
 *** Test Cases ***
 Open the modal window
@@ -26,6 +27,7 @@ Register button is disabled with invalid form
   Input Text  id=surname   ${invalid_surname}
   Input Text  id=email     ${invalid_email}
   Input Text  id=username  ${invalid_username}
+  Input Text  id=notes     ${invalid_notes}
   Element Should Be Disabled  name=register
   [Teardown]  Close registration form
 
@@ -66,4 +68,22 @@ Reset form
   Element Text Should Be  id=username  ${EMPTY}
   Element Text Should Be  id=notes     ${EMPTY}
   [Teardown]  Close registration form
+
+Notes field is mandatory
+  Open registration form
+  Input Text  id=name      Robot
+  Input Text  id=surname   Tester
+  Input Text  id=email     robot.tester@example.org
+  Input Text  id=username  robot
+  Element Should Be Disabled  name=register
+  [Teardown]  Close registration form
   
+Blank notes are not allowed
+  Open registration form
+  Input Text  id=name      Robot
+  Input Text  id=surname   Tester
+  Input Text  id=email     robot.tester@example.org
+  Input Text  id=username  robot
+  Input Text  id=notes     ${SPACE}${SPACE}${SPACE}${SPACE}${SPACE}
+  Element Should Be Disabled  name=register
+  [Teardown]  Close registration form
