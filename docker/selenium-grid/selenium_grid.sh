@@ -21,7 +21,7 @@ function start(){
 	fi
 	
 	echo "Starting Hub..."
-	docker run -d -e GRID_TIMEOUT=0 -p "4444:4444" $net_options --name selenium-hub --hostname selenium-hub selenium/hub
+	docker run -d -e GRID_TIMEOUT=0 -p "4444:4444" $net_options --name selenium-hub --hostname selenium-hub selenium/hub:3.0.1
 	
 	sleep 5
 	

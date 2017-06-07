@@ -7,12 +7,13 @@ Open registration form
 Close registration form
   Go back
   
-Register user  [Arguments]  ${name}  ${surname}  ${email}  ${username}
+Register user  [Arguments]  ${name}  ${surname}  ${email}  ${username}  ${notes}=Test registration
   Open registration form
   Input Text  id=name  ${name}
   Input Text  id=surname  ${surname}
   Input Text  id=email  ${email}
   Input Text  id=username  ${username}
+  Input Text  id=notes  ${notes}
   Wait Until Element Is Enabled  name=register
   Click Element  name=register
   Wait Until Page Contains  Request submitted successfully
