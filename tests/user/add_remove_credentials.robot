@@ -15,6 +15,7 @@ ${TEST_OIDC_SUBJECT}  Test OIDC subject
 
 ${TEST_SAML_IDPID}    Test SAML Identity Provider
 ${TEST_SAML_USERID}   Test SAML User Id
+${TEST_SAML_ATTRID}   employeeNumber
 
 *** Test Cases ***
 
@@ -32,6 +33,7 @@ Add and remove Open ID Connect account to user
 Add and remove SAML account to user
   Open add SAML account dialog  ${TEST_USER}
   Input SAML Idp  ${TEST_SAML_IDPID}
+  Select From List By Label  id=attributeId  ${TEST_SAML_ATTRID}
   Input SAML UserId  ${TEST_SAML_USERID}
   Wait Until ELement Is Enabled  id=modal-btn-confirm
   Click Element  id=modal-btn-confirm
