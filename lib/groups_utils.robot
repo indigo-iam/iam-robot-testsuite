@@ -26,7 +26,7 @@ Create group  [Arguments]  ${name}
 Delete group  [Arguments]  ${name}
   Find group in groups page  ${name}
   ${uuid}=  Get group uuid  ${name}
-  Click Element  xpath=//button[@id='delete_group_${uuid}']
+  Click Button  id=delete_group_${uuid}
   Wait Until Page Contains  Are you sure you want to delete group '${name}'
   Click Button  Delete Group
   Wait until modal overlay disappear
