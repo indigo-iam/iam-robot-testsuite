@@ -1,14 +1,4 @@
 *** Keywords ***
-
-Find group in groups page  [Arguments]  ${text}
-  Input text  xpath=//div[@class='input-group']/input  ${text}
-  Wait Until Page Contains Element  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${text}']
-
-Open Groups Add Group Dialog
-  Wait Until Page Contains Element  css=.box-footer
-  Click Button  Add Group
-  Wait Until Page Contains  Add new group
-
 Close Groups Add Group Dialog
   Click Button  Cancel
   Wait until modal overlay disappear
@@ -34,11 +24,25 @@ Delete group  [Arguments]  ${name}
   Clear search in groups page
   Wait Until Page Contains Element  id=groupslist
 
+Find group in groups page  [Arguments]  ${text}
+  Input text  xpath=//div[@class='input-group']/input  ${text}
+  Wait Until Page Contains Element  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${text}']
+
 Get group uuid  [Arguments]  ${name}
   Find group in groups page  ${name}
   ${uuid}=  Get Element Attribute  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${name}']/../../td[contains(@class,'uuid')]@id
   Log  ${uuid}
   [return]  ${uuid}
 
+Go to group details page  [Arguments]  ${groupname}
+  Find group in groups page  ${groupname}
+  Click Link  link=${groupname}
+  Wait until modal overlay disappear
+
 Input Name In Add Group Dialog  [Arguments]  ${name}
   Input Text  id=name  ${name}
+
+Open Groups Add Group Dialog
+  Wait Until Page Contains Element  css=.box-footer
+  Click Button  Add Group
+  Wait Until Page Contains  Add new group

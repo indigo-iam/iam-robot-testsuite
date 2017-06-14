@@ -11,7 +11,6 @@ Test Teardown  Teardown for nested group tests
 ${PARENT_GROUP}        Test-001
 ${SUB_GROUP}           test-test
 ${SECOND_LEVEL_GROUP}  test-test-test
-${MEMBER_TYPE}         Group
 
   
 *** Test Cases ***
@@ -22,7 +21,11 @@ Create group with parent
   
 Create new subgroup
   Create Subgroup  ${SUB_GROUP}  ${PARENT_GROUP}
-  Table Should Contain  userslist  ${SUB_GROUP}
+  ${row}=  Set Variable  2
+  ${id}=  Set Variable  subgroupslist
+  Table Cell Should Contain  ${id}  ${row}  1  1
+  Table Cell Should Contain  ${id}  ${row}  2  ${SUB_GROUP}
+  Table Cell Should Contain  ${id}  ${row}  3  Remove
   
 Create second level subgroup
   Open Groups Add Group Dialog
@@ -32,14 +35,18 @@ Create second level subgroup
   Find group in groups page  ${PARENT_GROUP}/${SUB_GROUP}/${SECOND_LEVEL_GROUP}
   Delete subgroup  ${PARENT_GROUP}/${SUB_GROUP}/${SECOND_LEVEL_GROUP}
   
-Group members don't have remove button
+Remove subgroup from group page
   Create Subgroup  ${SUB_GROUP}  ${PARENT_GROUP}
   ${row}=  Set Variable  2
-  Table Cell Should Contain  userslist  ${row}  1  1
-  Table Cell Should Contain  userslist  ${row}  2  ${SUB_GROUP}
-  Table Cell Should Contain  userslist  ${row}  3  ${MEMBER_TYPE}
-  Table Cell Should Contain  userslist  ${row}  4  ${EMPTY}
-  
+  ${id}=  Set Variable  subgroupslist
+  Table Cell Should Contain  ${id}  ${row}  2  ${SUB_GROUP}
+  Table Cell Should Contain  ${id}  ${row}  3  Remove
+  Click Button  xpath=//*[@id='${id}']/tbody/tr[1]/td[3]/button
+  Wait Until Page Contains  Are you sure you want to delete group '${SUB_GROUP}'
+  Click Button  Delete Group
+  Wait until modal overlay disappear
+  Wait Until Page Contains  Group ${SUB_GROUP} DELETED successfully
+  [Teardown]  Logout from Indigo dashboard
   
 *** Keywords ***
 Setup for nested group tests

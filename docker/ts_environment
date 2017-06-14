@@ -1,6 +1,6 @@
 TESTSUITE_REPO=https://github.com/indigo-iam/iam-robot-testsuite.git
 TESTSUITE_BRANCH=develop
-TESTSUITE_OPTS=--include=test-client --include=token
+TESTSUITE_OPTS=--exclude=test-client
 OUTPUT_REPORTS=reports
 BROWSER=firefox
 IAM_BASE_URL=https://iam.local.io
