@@ -18,7 +18,6 @@ Add Group Tests setup
   Go to Indigo dashboard
   Go to groups page
 
-
 *** Test Cases ***
 
 Open And Close Add Group Dialog
@@ -37,12 +36,3 @@ Group with member cannot be removed
   Click Button  Delete Group
   Wait until modal overlay disappear
   Wait Until Page Contains  Group is not empty
-  
-Creation form is invalid with name too long
-  ${name}=  Set Variable  group_with_name_longer_than_fifty_characters_is_not_allowed
-  Open Groups Add Group Dialog
-  Input Name In Add Group Dialog  ${name}
-  Element Should Be Disabled  id=modal-btn-confirm
-  Page Should Contain Element  css=span.help-block
-  Page Should Contain  Max 50 characters
-  Close Groups Add Group Dialog
