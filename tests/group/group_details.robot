@@ -30,7 +30,7 @@ Subgroup creation form is invalid with name too long
   Input Name In Add Group Dialog  ${name}
   Element Should Be Disabled  id=modal-btn-confirm
   Page Should Contain Element  css=span.help-block
-  Page Should Contain  Max 50 characters
+  Page Should Contain  Group name length must not exceed 50 characters
   Close Groups Add Group Dialog
   
 *** Keywords ***
