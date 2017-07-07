@@ -1,8 +1,8 @@
 TESTSUITE_REPO=https://github.com/indigo-iam/iam-robot-testsuite.git
 TESTSUITE_BRANCH=develop
-TESTSUITE_OPTS=--include=test-client --include=token
+TESTSUITE_OPTS=--exclude=test-client
 OUTPUT_REPORTS=reports
-BROWSER=firefox
+BROWSER=chrome
 IAM_BASE_URL=https://iam.local.io
 IAM_TEST_CLIENT_URL=https://iam.local.io/iam-test-client
 REMOTE_URL=http://selenium-hub:4444/wd/hub

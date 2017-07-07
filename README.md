@@ -23,7 +23,7 @@ This testsuite has some customizable variables. They are the following:
 ## Run manually
 For run the testsuite, you need Robot Framework and Selenium. Install them with:
 
-```bash
+```console
  $ sudo yum install -y python-pip
  $ sudo pip install robotframework
  $ sudo pip install selenium==2.53.6
@@ -35,14 +35,14 @@ By default, the testsuite run Selenium tests using Firefox web browser. If you w
 the corrisponding webdriver and put it in the library path.
 For example, install Google Chrome webdriver with:
 
-```bash
+```console
  $ wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip
  $ unzip /tmp/chromedriver.zip -d /usr/local/bin
 
 ```
 
 Then, run the testsuite:
-```bash
+```console
  $ cd iam-robot-testsuite
  $ pybot --pythonpath .:lib  -d reports/  tests/
 
@@ -51,7 +51,7 @@ Then, run the testsuite:
 You can restrict the run test specifying the sub-directory or the single file or the single test case (option _-t_).
 
 Some useful option are:
-```bash
+```console
   -d /path/to/some/dir : specify directory where write final output, log and report
   -t "Test name"       : execute only the test named with "Test name"
 ```
@@ -61,7 +61,7 @@ This testsuite provides a Docker image to run the tests in headless environments
 All the needed files are located in _docker_ folder.
 
 First, start the Selenium Grid Hub with the two node:
-```bash
+```console
  $ sh docker/selenium-grid/selenium_grid.sh start
 ```
 The command above brings on a Selenium Hub, listen on TCP port 4444 ad attaches its two nodes, one with Chrome and the other with Firefox.
@@ -70,26 +70,26 @@ Verify the selenium hub status pointing a browser to `http://localhost:4444/grid
 If you want connect Selenium Grid to an existing Docker network and inject an hostname into browser nodes, 
 export the variables `DOCKER_NET_NAME` and `IAM_HOSTNAME`. For examples:
 
-```bash
+```console
 $ IAM_HOSTNAME=iam.local.io DOCKER_NET_NAME=iam_default sh docker/selenium-grid/selenium_grid.sh start
 ```
 
 Then, build the testsuite image:
-```bash
+```console
  $ cd docker
  $ ./build-image.sh
 ```
 This shell script creates a new Docker image, named _italiangrid/iam-robot-testsuite_ in the local image repository.
 Then run the testsuite container.
 
-```bash
+```console
  $ docker run italiangrid/iam-robot-testsuite:latest
 ```
 
 The last command launch a container that run the testsuite with default setup. For customize the execution, provide to Docker the proper environment variables with _-e_ option.
 For example:
 
-```bash
+```console
  $ docker run \ 
    -e TESTSUITE_REPO=file:///tmp/local_repo/iam-robot-testsuite \
    -e TESTSUITE_BRANCH=issue/issue-1 \
@@ -97,7 +97,7 @@ For example:
    -e BROWSER=chrome \
    -e REMOTE_URL=http://selenium-hub:4444/wd/hub \
    -e TIMEOUT=30 \
-   italiangrid/iam-testsuite:latest
+   italiangrid/iam-robot-testsuite:latest
 ```
 
 To run the testsuite into dockerized environment, be aware that the testsuite container can resolve both IAM instance and Selenium Hub. 
