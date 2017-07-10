@@ -4,6 +4,7 @@ Resource  lib/utils.robot
 Suite Setup  Go to IAM
 Suite Teardown  Close All Browsers
 
+Force Tags   password
 
 *** Test Cases ***
 Open change password modal

@@ -7,6 +7,8 @@ Suite Teardown  Close All Browsers
 Test Setup  Setup for group details tests
 Test Teardown  Logout from Indigo dashboard
 
+Force Tags   group:details
+
 *** Variables ***
 ${PARENT_GROUP}        Test-001
   

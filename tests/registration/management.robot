@@ -6,6 +6,7 @@ Suite Teardown  Close All Browsers
 
 Test Teardown  Logout from Indigo dashboard
 
+Force Tags   registration:management
 *** Test Cases ***
 
 Approve registration request

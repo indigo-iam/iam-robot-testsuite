@@ -7,6 +7,8 @@ Suite Teardown  Close All Browsers
 Test Setup  Login as test user
 Test Teardown  Logout From Dashboard
 
+Force Tags   home:edit-user-info
+
 *** Variables ***
 ${TEST_USERNAME}                  test_100
 ${TEST_PASSWORD}                  password

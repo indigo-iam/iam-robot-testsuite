@@ -7,6 +7,8 @@ Suite Teardown  Close All Browsers
 Test Setup  Add Group Tests setup
 Test Teardown  Logout from Indigo dashboard
 
+Force Tags   group:manage
+
 *** Variables ***
 ${TEST_GROUP_NAME}  Betatesters
 ${NOT_EMPTY_GROUP}  Analysis

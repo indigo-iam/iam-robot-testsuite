@@ -1,0 +1,16 @@
+TESTSUITE_REPO=/code/iam-robot-testsuite
+TESTSUITE_BRANCH=develop
+TESTSUITE_OPTS=--exclude=test-client
+OUTPUT_REPORTS=reports
+BROWSER=chrome
+IAM_BASE_URL=https://iam.local.io
+IAM_TEST_CLIENT_URL=https://iam.local.io/iam-test-client
+REMOTE_URL=http://iam.local.io:4444/wd/hub
+TIMEOUT=5
+IMPLICIT_WAIT=1
+ADMIN_USER=admin
+ADMIN_PASSWORD=password
+CLIENT_ID=client-cred
+CLIENT_SECRET=secret
+TOKEN_EXCHANGE_CLIENT_ID=token-exchange-actor
+TOKEN_EXCHANGE_CLIENT_SECRET=secret

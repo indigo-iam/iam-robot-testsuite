@@ -4,6 +4,8 @@ Resource  lib/utils.robot
 Suite Setup  Go to IAM
 Suite Teardown  Close All Browsers
 
+Force Tags   home:password-change
+
 *** Variables ***
 ${TEST_USERNAME}          test
 ${TEST_PASSWORD}          password

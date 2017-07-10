@@ -4,6 +4,8 @@ Resource  lib/utils.robot
 Suite Setup  Go to IAM
 Suite Teardown  Close All Browsers
 
+Force Tags   registration:user
+
 *** Variables ***
 ${invalid_name}      xx
 ${invalid_surname}   xx
