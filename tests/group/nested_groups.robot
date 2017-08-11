@@ -7,6 +7,8 @@ Suite Teardown  Close All Browsers
 Test Setup  Setup for nested group tests
 Test Teardown  Teardown for nested group tests
 
+Force Tags   group:nested
+
 *** Variables ***
 ${PARENT_GROUP}  Test-001
 ${L1_GROUP}      test-L1

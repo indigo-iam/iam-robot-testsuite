@@ -7,6 +7,8 @@ Suite Teardown  Close All Browsers
 Test Setup  Login as admin and go to dashboard
 Test Teardown  Logout From Dashboard
 
+Force tags   user:user-info
+
 *** Variables ***
 ${TEST_USER_GIVENNAME}     Dexter
 ${TEST_USER_FAMILYNAME}    Morgan

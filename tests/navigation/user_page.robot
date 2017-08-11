@@ -7,6 +7,8 @@ Suite Teardown  Close All Browsers
 Test Setup  User Page Navigation Tests setup
 Test Teardown  Logout from Indigo dashboard
 
+Force Tags   navigation:user
+
 *** Variables ***
 
 ${TEST_USER}          Test User
@@ -31,3 +33,7 @@ Open and close add OpenID Connect Account dialog
 Open and close add SAML Account dialog
   Open add SAML account dialog  ${TEST_USER}
   Close add SAML account dialog
+
+Open and close add certificate dialog
+  Open add certificate dialog   ${TEST_USER}
+  Close dialog

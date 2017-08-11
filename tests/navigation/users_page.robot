@@ -7,6 +7,8 @@ Suite Teardown  Close All Browsers
 Test Setup  Users Page Navigation Tests setup
 Test Teardown  Logout from Indigo dashboard
 
+Force Tags   navigation:users
+
 *** Variables ***
 
 *** Keywords ***
