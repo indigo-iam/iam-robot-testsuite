@@ -57,7 +57,7 @@ Get token with client credentials flow
   &{data}=  Create Dictionary  
   ...  grant_type=${client_credentials_grant}
   ...  scope="openid profile offline_access"
-  ${result}=  Perform request  ${IAM_TOKEN_ENDPOINT}  ${CLIENT_ID}  ${CLIENT_SECRET}  &{data}
+  ${result}=  Perform token request  ${IAM_TOKEN_ENDPOINT}  ${CLIENT_ID}  ${CLIENT_SECRET}  &{data}
 
 
 Get token with resource owner flow
@@ -67,7 +67,7 @@ Get token with resource owner flow
   ...  username=${ADMIN_USER}
   ...  password=${ADMIN_PASSWORD}
   ...  scope="openid profile offline_access"
-  ${result}=  Perform request  ${IAM_TOKEN_ENDPOINT}  ${CLIENT_ID}  ${CLIENT_SECRET}  &{data}
+  ${result}=  Perform token request  ${IAM_TOKEN_ENDPOINT}  ${CLIENT_ID}  ${CLIENT_SECRET}  &{data}
   
 
 Get token with token exchange flow
@@ -77,7 +77,7 @@ Get token with token exchange flow
   ...  username=${ADMIN_USER}
   ...  password=${ADMIN_PASSWORD}
   ...  scope="openid profile offline_access"
-  ${result}=  Perform request  ${IAM_TOKEN_ENDPOINT}  ${CLIENT_ID}  ${CLIENT_SECRET}  &{data}
+  ${result}=  Perform token request  ${IAM_TOKEN_ENDPOINT}  ${CLIENT_ID}  ${CLIENT_SECRET}  &{data}
   ${access_token}=  Get Json Value  ${result}  /access_token
   &{data}=  Create Dictionary  
   ...  grant_type=${token_exchange_grant}

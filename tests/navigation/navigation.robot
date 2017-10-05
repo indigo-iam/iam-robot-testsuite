@@ -46,3 +46,12 @@ Open group page with an empty group
 
 Open requests page
   Go to request management page
+
+Open tokens page
+  Go to tokens page
+
+Open access tokens page
+  Go to access tokens page
+
+Open refresh tokens page
+  Go to refresh tokens page

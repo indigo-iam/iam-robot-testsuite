@@ -69,5 +69,17 @@ Go to group page  [Arguments]  ${name}
   Wait until modal overlay disappear
   Wait Until Page Contains  Members
 
+Go to tokens page
+  Go to access tokens page
+
+Go to access tokens page
+  Click menu navigation entry  Active Tokens
+  Wait Until Page Contains Element  id=refresh_atoken_list
+
+Go to refresh tokens page
+  Go to access tokens page
+  Click Element  tabRefreshTokens
+  Wait Until Page Contains Element  id=refresh_rtoken_list
+
 Wait Until Element Is Disabled  [Arguments]  ${id}
   Wait For Condition  return document.getElementById("${id}").getAttribute("disabled") == 'disabled' 
