@@ -22,11 +22,11 @@ Get token with client credentials flow  [Arguments]  ${client_id}  ${client_secr
   &{data}=  Create Dictionary  
   ...  grant_type=${client_credentials_grant}
   ...  scope="${scopes}"
-  ${result}=  Perform token request  ${IAM_TOKEN_ENDPOINT}  ${client_id}  ${client_secret}  &{data}
-  Log  ${result}
-  ${parsedResult}=  Parse Json  ${result}
-  Log  ${parsedResult}
-  [Return]  ${parsedResult}
+  ${tokenResponse}=  Perform token request  ${IAM_TOKEN_ENDPOINT}  ${client_id}  ${client_secret}  &{data}
+  Log  ${tokenResponse}
+  ${parsedTokenResponse}=  Parse Json  ${tokenResponse}
+  Log  ${parsedTokenResponse}
+  [Return]  ${parsedTokenResponse}
 
 Get token with resource owner flow  [Arguments]  ${client_id}  ${client_secret}  ${username}  ${password}  ${scopes}
   &{data}=  Create Dictionary  
@@ -34,8 +34,8 @@ Get token with resource owner flow  [Arguments]  ${client_id}  ${client_secret} 
   ...  scope="${scopes}"
   ...  username="${username}"
   ...  password="${password}"
-  ${result}=  Perform token request  ${IAM_TOKEN_ENDPOINT}  ${client_id}  ${client_secret}  &{data}
-  Log  ${result}
-  ${parsedResult}=  Parse Json  ${result}
-  Log  ${parsedResult}
-  [Return]  ${parsedResult}
+  ${tokenResponse}=  Perform token request  ${IAM_TOKEN_ENDPOINT}  ${client_id}  ${client_secret}  &{data}
+  Log  ${tokenResponse}
+  ${parsedTokenResponse}=  Parse Json  ${tokenResponse}
+  Log  ${parsedTokenResponse}
+  [Return]  ${parsedTokenResponse}

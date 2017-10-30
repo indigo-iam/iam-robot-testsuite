@@ -10,7 +10,7 @@ Login as admin
   Input username  ${ADMIN_USER}
   Wait Until Page Contains Element  id=password
   Input password  ${ADMIN_PASSWORD}
-  Click Element  xpath=//input[@value='Login']
+  Click Element  id=login-submit
   Wait Until Page Contains Element  name=edit-user-btn
 
 Login as user  [Arguments]  ${username}  ${password}
@@ -18,7 +18,7 @@ Login as user  [Arguments]  ${username}  ${password}
   Input username  ${username}
   Wait Until Page Contains Element  id=password
   Input password  ${password}
-  Click Element  xpath=//input[@value='Login']
+  Click Element  id=login-submit
   Wait Until Page Contains Element  name=edit-user-btn
 
 Logout from Mitre dashboard

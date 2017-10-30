@@ -1,4 +1,17 @@
 *** Keywords ***
+Get Admin Access Token
+  ${tokenResponse}=  Get token with resource owner flow  token-exchange-actor  secret  admin  password  openid profile offline_access
+  [Return]  ${tokenResponse["access_token"]}
+
+Delete All Tokens
+  ${token}=  Get Admin Access Token
+  Create Http Context  host=${IAM_HTTP_HOST}  scheme=${IAM_HTTP_SCHEME}
+  Set Request Header   Authorization   Bearer ${token}
+  Next Request Should Have Status Code   204
+  DELETE   /iam/api/refresh-tokens
+  Set Request Header   Authorization   Bearer ${token}
+  Next Request Should Have Status Code   204
+  DELETE   /iam/api/access-tokens
 
 Get Total Tokens Badge Value
   Page Should Contain Element  xpath=//small[@id="tokensBadge"]
@@ -78,29 +91,6 @@ Refresh Token List Should Not Contain Token Value  [Arguments]  ${token_value}
   Page Should Not Contain Element  xpath=//input[@value="${token_value}"]
   Page Should Not Contain Element  xpath=//button[@id="revoke_${token_value}"]
 
-Clean Access Tokens List
-  :FOR    ${i}    IN RANGE    999999
-  \    ${tot}=  Get Access Tokens Badge Value
-  \    Exit For Loop If  ${tot}==${0}
-  \    Click First Revoke Button
-  \    Revoke Access Token Dialog Confirm Revoke
-
-Clean Refresh Tokens List
-  :FOR    ${i}    IN RANGE    999999
-  \    ${tot}=  Get Refresh Tokens Badge Value
-  \    Exit For Loop If  ${tot}==${0}
-  \    Click First Revoke Button
-  \    Revoke Refresh Token Dialog Confirm Revoke
-
-Clear All Tokens
-  Go to access tokens page
-  Clean Access Tokens List
-  Access Token Badge Value Should Be  ${0}
-  Go to refresh tokens page
-  Clean Refresh Tokens List
-  Refresh Token Badge Value Should Be  ${0}
-  Total Token Badge Value Should Be  ${0}
-
 Click Revoke Button Of Token  [Arguments]  ${token_value}
   Page Should Contain Element  xpath=//button[@id="revoke_${token_value}"]
   Click Element  xpath=//button[@id="revoke_${token_value}"]
@@ -145,3 +135,11 @@ Navigate To Access Tokens List Page  [Arguments]  ${pageNumber}
 
 Navigate To Refresh Tokens List Page  [Arguments]  ${pageNumber}
   Click Link  xpath=//ul[@id='rtoken_pagination_top']//a[text()=${pageNumber}]
+
+Tokens tests setup
+  Login as admin
+  Delete All Tokens
+
+Tokens tests teardown
+  Delete All Tokens
+  Logout from Indigo dashboard

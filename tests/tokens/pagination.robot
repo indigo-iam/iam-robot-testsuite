@@ -6,23 +6,11 @@ Suite Teardown  Close All Browsers
 Test Setup  Tokens tests setup
 Test Teardown  Tokens tests teardown
 
-*** Variables ***
-
-*** Keywords ***
-
-Tokens tests setup
-  Login as admin
-  Clear All Tokens
-
-Tokens tests teardown
-  Clear All Tokens
-  Logout from Indigo dashboard
-
 *** Test Cases ***
 
 Find Access Token Not In First Page
   Go to access tokens page
-  :FOR    ${i}    IN RANGE    8
+  :FOR    ${i}    IN RANGE    10
   \    Get token with resource owner flow  token-exchange-subject  secret  test  password  openid profile offline_access
   ${token}=  Get token with resource owner flow  token-exchange-actor  secret  admin  password  openid profile offline_access
   Refresh Access Tokens List

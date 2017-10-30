@@ -9,12 +9,12 @@ Force Tags   password
 *** Test Cases ***
 Open change password modal
   Click Link  link=Forgot your password?
-  Wait Until Page Contains  Please enter your IAM account email address
+  Wait Until Page Contains  Please enter the email address linked to your
   Click Button  name=dismiss
 
 Submit change password request
   Click Link  link=Forgot your password?
-  Wait Until Page Contains  Please enter your IAM account email address
+  Wait Until Page Contains  Please enter the email address linked to your
   Input text  id=email  tester@example.it
   Click Button  Submit
   Wait Until Page Contains  Done!

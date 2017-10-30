@@ -83,3 +83,6 @@ Go to refresh tokens page
 
 Wait Until Element Is Disabled  [Arguments]  ${id}
   Wait For Condition  return document.getElementById("${id}").getAttribute("disabled") == 'disabled' 
+
+Scroll to the bottom of the page
+  Execute Javascript   window.scrollTo(0, 2000)
