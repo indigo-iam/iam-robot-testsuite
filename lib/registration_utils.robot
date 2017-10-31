@@ -15,7 +15,6 @@ Register user  [Arguments]  ${name}  ${surname}  ${email}  ${username}  ${notes}
   Input Text  id=username  ${username}
   Input Text  id=notes  ${notes}
   Wait Until Element Is Enabled  id=register-submit-btn
-  Scroll to the bottom of the page
-  Click Element  id=register-submit-btn
+  Focus and Click Element  id=register-submit-btn
   Wait Until Page Contains  Request submitted successfully
   Click Link  link=Back to Login Page

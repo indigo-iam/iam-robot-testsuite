@@ -73,7 +73,7 @@ Go to tokens page
   Go to access tokens page
 
 Go to access tokens page
-  Click menu navigation entry  Active Tokens
+  Click menu navigation entry  Tokens
   Wait Until Page Contains Element  id=refresh_atoken_list
 
 Go to refresh tokens page
@@ -83,6 +83,10 @@ Go to refresh tokens page
 
 Wait Until Element Is Disabled  [Arguments]  ${id}
   Wait For Condition  return document.getElementById("${id}").getAttribute("disabled") == 'disabled' 
+
+Focus And Click Element   [Arguments]   ${locator}
+  Focus   ${locator}
+  Click Element   ${locator}
 
 Scroll to the bottom of the page
   Execute Javascript   window.scrollTo(0, 2000)

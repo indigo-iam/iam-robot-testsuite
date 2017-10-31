@@ -41,8 +41,7 @@ Submit a new registration request
   Input Text  id=username  robot
   Input Text  id=notes     Very short notes for the admin
   Wait Until Element Is Enabled  id=register-submit-btn
-  Scroll to the bottom of the page
-  Click Element  id=register-submit-btn
+  Focus and Click Element  id=register-submit-btn
   Wait Until Page Contains  Request submitted successfully
   Click Link  link=Back to Login Page
   Login as admin
@@ -64,8 +63,7 @@ Reset form
   Input Text  id=username  robot
   Input Text  id=notes     Very short notes for the admin
   Element Should Be Enabled  id=register-reset-btn
-  Scroll to the bottom of the page
-  Click Button  id=register-reset-btn
+  Focus and Click Element  id=register-reset-btn
   Element Text Should Be  id=name      ${EMPTY}
   Element Text Should Be  id=surname   ${EMPTY}
   Element Text Should Be  id=email     ${EMPTY}
