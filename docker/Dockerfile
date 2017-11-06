@@ -7,6 +7,8 @@ ENV OUTPUT_REPORTS=reports
 
 ENV BROWSER=firefox
 ENV IAM_BASE_URL=http://localhost:8080
+ENV IAM_HTTP_HOST=iam.local.io
+ENV IAM_HTTP_SCHEME=https
 ENV IAM_TEST_CLIENT_URL=http://localhost:9090/iam-test-client
 ENV REMOTE_URL=''
 ENV TIMEOUT=10
