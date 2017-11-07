@@ -25,6 +25,7 @@ ENV TOKEN_EXCHANGE_CLIENT_SECRET=secret
 RUN dnf install -y python-pip git curl ca-certificates
 
 COPY files/igi-test-ca.pem /etc/pki/ca-trust/source/anchors/
+COPY files/kube-ca.crt.pem /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust
 
 ## Layer: RobotFramework
