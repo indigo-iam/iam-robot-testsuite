@@ -1,5 +1,7 @@
 FROM docker.io/fedora:latest
 
+ARG USER_UID=10000
+
 ENV TESTSUITE_REPO=https://github.com/indigo-iam/iam-robot-testsuite.git
 ENV TESTSUITE_BRANCH=master
 ENV TESTSUITE_OPTS=''
@@ -36,7 +38,7 @@ RUN pip install --upgrade pip && \
     pip install robotframework-httplibrary
 
 ## Layer: tester
-RUN useradd -ms /bin/bash tester
+RUN useradd -ms /bin/bash tester --uid ${USER_UID}
 COPY files/run.sh /home/tester/
 RUN chown tester:tester /home/tester/run.sh
 

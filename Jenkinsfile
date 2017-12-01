@@ -2,11 +2,17 @@ pipeline {
   agent { label 'docker' }
 
   options {
-    timeout(time: 1, unit: 'HOURS')
+    timeout(time: 2, unit: 'HOURS')
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
-
-  triggers { cron('@daily') }
+  
+  parameters {
+  	string(name: 'USER_UID', defaultValue: '10000', description: 'User UID')
+  }
+  
+  environment {
+  	USER_UID="${params.USER_UID}"
+  }
 
   stages {
     stage('prepare'){
