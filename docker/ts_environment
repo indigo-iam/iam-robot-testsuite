@@ -1,13 +1,13 @@
 TESTSUITE_REPO=https://github.com/indigo-iam/iam-robot-testsuite.git
 TESTSUITE_BRANCH=develop
 TESTSUITE_OPTS=--exclude=test-client
-OUTPUT_REPORTS=reports
+OUTPUT_REPORTS=/tmp/reports
 BROWSER=chrome
 IAM_BASE_URL=https://iam.local.io
 IAM_TEST_CLIENT_URL=https://iam.local.io/iam-test-client
 REMOTE_URL=http://selenium-hub:4444/wd/hub
 TIMEOUT=10
-IMPLICIT_WAIT=2
+IMPLICIT_WAIT=0.0
 ADMIN_USER=admin
 ADMIN_PASSWORD=password
 CLIENT_ID=client-cred

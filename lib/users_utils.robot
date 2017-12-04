@@ -61,7 +61,7 @@ Delete user  [Arguments]  ${name}
 
 Get user uuid  [Arguments]  ${name}
   Find user in users page  ${name}
-  ${uuid}=  Get Element Attribute  xpath=//*[@id='userslist']/tbody/tr/td/a[text()='${name}']/../../td[contains(@class,'uuid')]@id
+  ${uuid}=  Get Element Attribute  xpath=//*[@id='userslist']/tbody/tr/td/a[text()='${name}']/../../td[contains(@class,'uuid')]  id
   Log  ${uuid}
   [return]  ${uuid}
 

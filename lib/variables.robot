@@ -16,4 +16,4 @@ ${SPEED}                 0.1
 ${REMOTE_URL}            ${EMPTY}
 ${TIMEOUT}               10
 ${DESIRED_CAPABILITIES}  ${EMPTY}
-${IMPLICIT_WAIT}         1
+${IMPLICIT_WAIT}         0.0

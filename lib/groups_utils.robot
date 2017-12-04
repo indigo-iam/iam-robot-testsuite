@@ -30,7 +30,7 @@ Find group in groups page  [Arguments]  ${text}
 
 Get group uuid  [Arguments]  ${name}
   Find group in groups page  ${name}
-  ${uuid}=  Get Element Attribute  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${name}']/../../td[contains(@class,'uuid')]@id
+  ${uuid}=  Get Element Attribute  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${name}']/../../td[contains(@class,'uuid')]  id
   Log  ${uuid}
   [return]  ${uuid}
 

@@ -33,8 +33,8 @@ RUN update-ca-trust
 ## Layer: RobotFramework
 RUN pip install --upgrade pip && \
     pip install robotframework && \
-    pip install selenium==2.53.6 && \
-    pip install robotframework-selenium2library && \
+    pip install selenium && \
+    pip install robotframework-seleniumlibrary && \
     pip install robotframework-httplibrary
 
 ## Layer: tester

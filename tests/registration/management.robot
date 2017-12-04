@@ -76,11 +76,11 @@ Pagination
 *** Keywords ***
 
 Pagination button should be disabled  [Arguments]  ${text}
-  ${result}=  Get Element Attribute  xpath=//li[./a[text()='${text}']]@class
+  ${result}=  Get Element Attribute  xpath=//li[./a[text()='${text}']]  class
   Should Contain  ${result}  disabled
   
 Pagination button should be enabled  [Arguments]  ${text}
-  ${result}=  Get Element Attribute  xpath=//li[./a[text()='${text}']]@class
+  ${result}=  Get Element Attribute  xpath=//li[./a[text()='${text}']]  class
   Should Not Contain  ${result}  disabled
   
 Requests table contains row with user  [Arguments]  ${user}

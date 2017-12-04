@@ -26,8 +26,8 @@ For run the testsuite, you need Robot Framework and Selenium. Install them with:
 ```console
  $ sudo yum install -y python-pip
  $ sudo pip install robotframework
- $ sudo pip install selenium==2.53.6
- $ sudo pip install robotframework-selenium2library
+ $ sudo pip install selenium
+ $ sudo pip install robotframework-seleniumlibrary
  $ sudo pip install robotframework-httplibrary
 ```
 
@@ -36,9 +36,12 @@ the corrisponding webdriver and put it in the library path.
 For example, install Google Chrome webdriver with:
 
 ```console
- $ wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip
+ $ wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
  $ unzip /tmp/chromedriver.zip -d /usr/local/bin
 
+ $ wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz
+ $ cd /usr/local/bin
+ $ tar zxf /tmp/geckodriver.tar.gz
 ```
 
 Then, run the testsuite:
