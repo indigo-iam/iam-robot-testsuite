@@ -12,20 +12,16 @@ pipeline {
   
   environment {
   	USER_UID="${params.USER_UID}"
+  	DOCKER_REGISTRY_HOST = "${env.DOCKER_REGISTRY_HOST}"
   }
 
   stages {
-    stage('prepare'){
-      steps {
-        cleanWs notFailBuild: true
-        checkout scm
-      }
-    }
-
     stage('build image'){
       steps {
-        dir('docker'){
-          sh './build-image.sh'
+        container('docker-runner'){
+          dir('docker'){
+            sh 'sh build-image.sh'
+          }
         }
       }
     }
@@ -36,17 +32,17 @@ pipeline {
         environment name: 'CHANGE_URL', value: ''
       }
       steps {
-        dir('docker'){
-          sh './push-image.sh'
+        container('docker-runner'){
+          dir('docker'){
+            sh 'sh push-image.sh'
+          }
         }
       }
     }
     
     stage('result'){
    	  steps {
-   	    script {
-   	      currentBuild.result = 'SUCCESS'
-   	    }
+   	    script { currentBuild.result = 'SUCCESS' }
    	  }
     }
   }
