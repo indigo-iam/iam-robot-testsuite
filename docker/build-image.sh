@@ -1,3 +1,3 @@
 #!/bin/bash
-
-docker build --no-cache -t italiangrid/iam-robot-testsuite .
+IMAGE_NAME="${TESTSUITE_IMAGE_NAME:-indigoiam/iam-robot-testsuite}"
+docker build --no-cache -t ${TESTSUITE_IMAGE_NAME} .
