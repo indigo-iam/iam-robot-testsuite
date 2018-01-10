@@ -7,13 +7,13 @@ ENV TESTSUITE_BRANCH=master
 ENV TESTSUITE_OPTS=''
 ENV OUTPUT_REPORTS=reports
 
-ENV BROWSER=firefox
+ENV BROWSER=chrome
 ENV IAM_BASE_URL=http://localhost:8080
 ENV IAM_HTTP_HOST=iam.local.io
 ENV IAM_HTTP_SCHEME=https
 ENV IAM_TEST_CLIENT_URL=http://localhost:9090/iam-test-client
 ENV REMOTE_URL=''
-ENV TIMEOUT=10
+ENV TIMEOUT=5
 ENV IMPLICIT_WAIT=2
 ENV ADMIN_USER=admin
 ENV ADMIN_PASSWORD=password
@@ -21,7 +21,6 @@ ENV CLIENT_ID=client-cred
 ENV CLIENT_SECRET=secret
 ENV TOKEN_EXCHANGE_CLIENT_ID=token-exchange-actor
 ENV TOKEN_EXCHANGE_CLIENT_SECRET=secret
-
 
 ## Layer: base
 RUN dnf install -y python-pip git curl ca-certificates
