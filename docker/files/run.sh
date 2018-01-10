@@ -1,12 +1,11 @@
 #!/bin/bash
-
 set -xe
 
 TESTSUITE_REPO="${TESTSUITE_REPO:-https://github.com/indigo-iam/iam-robot-testsuite.git}"
 TESTSUITE_BRANCH="${TESTSUITE_BRANCH:-master}"
 TESTSUITE_OPTS="${TESTSUITE_OPTS:-}"
 OUTPUT_REPORTS="${OUTPUT_REPORTS:-reports}"
-
+SPEED=${SPEED:-0}
 BROWSER="${BROWSER:-firefox}"
 IAM_BASE_URL="${IAM_BASE_URL:-http://localhost:8080}"
 IAM_TEST_CLIENT_URL="${IAM_TEST_CLIENT_URL:-http://localhost:9090/iam-test-client}"
@@ -86,6 +85,7 @@ cd /home/tester/iam-robot-testsuite
 echo "Run ..."
 pybot --pythonpath .:lib \
 	--variable BROWSER:${BROWSER} \
+	--variable SPEED:${SPEED} \
 	--variable IAM_BASE_URL:${IAM_BASE_URL} \
 	--variable REMOTE_URL:${REMOTE_URL} \
 	--variable TIMEOUT:${TIMEOUT} \
