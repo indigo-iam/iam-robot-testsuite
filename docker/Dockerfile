@@ -21,6 +21,7 @@ ENV CLIENT_ID=client-cred
 ENV CLIENT_SECRET=secret
 ENV TOKEN_EXCHANGE_CLIENT_ID=token-exchange-actor
 ENV TOKEN_EXCHANGE_CLIENT_SECRET=secret
+ENV SPEED=0
 
 ## Layer: base
 RUN dnf install -y python-pip git curl ca-certificates
