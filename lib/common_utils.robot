@@ -8,10 +8,21 @@ Setup
 Generate capabilities configuration
   ${DESIRED_CAPABILITIES}=  Create Dictionary  acceptSslCerts=True
 
+Setup Browser
+  Close All Browsers
+  Generate capabilities configuration
+  Open Browser  ${IAM_BASE_URL}  browser=${BROWSER}  remote_url=${REMOTE_URL}  desired_capabilities=${DESIRED_CAPABILITIES}
+  Delete All Cookies
+  Setup
+  
 Go to IAM
   Generate capabilities configuration
   Open Browser  ${IAM_BASE_URL}  browser=${BROWSER}  remote_url=${REMOTE_URL}  desired_capabilities=${DESIRED_CAPABILITIES}
   Setup
+
+Go to IAM test client
+  Setup Browser
+  Go To   ${IAM_TEST_CLIENT_URL}
 
 Go to Indigo dashboard
   No Operation

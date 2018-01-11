@@ -1,6 +1,5 @@
 *** Settings ***
 Resource  lib/utils.robot
-
 Force Tags   test-client
 
 *** Variables ***
@@ -10,21 +9,11 @@ ${client_credentials_grant}  client_credentials
 ${token_exchange_grant}      urn:ietf:params:oauth:grant-type:token-exchange
 
 *** Keywords ***
-Go to IAM test client
-  Go to IAM
-  Go to  ${IAM_TEST_CLIENT_URL}
-  
+
 Approve IAM test client
   ${count}=  Get Matching Xpath Count  //form[@name='confirmationForm']
   Run Keyword If  ${count}==1  Click element  name=authorize
   
-Login into IAM  [Arguments]  ${username}=${ADMIN_USER}  ${password}=${ADMIN_PASSWORD}
-  Wait Until Page Contains Element  id=username
-  Input username  ${username}
-  Wait Until Page Contains Element  id=password
-  Input password  ${password}
-  Click Element  xpath=//input[@value='Login']
-
 Perform request  [Arguments]  ${token_endpoint}  ${user}  ${passwd}  &{request_data}
   Log Dictionary  ${request_data}
   ${items}=  Get Dictionary Items  ${request_data}
@@ -45,7 +34,9 @@ Login with test client
   Click link  link=Log in with INDIGO IAM
   Wait Until Page Contains Element  id=username
   Wait Until Page Contains Element  id=password
-  Login into IAM  ${ADMIN_USER}  ${ADMIN_PASSWORD}
+  Input username   ${ADMIN_USER}
+  Input password   ${ADMIN_PASSWORD}
+  Click Element   id=login-submit
   Approve IAM test client
   Wait Until Page Contains  You're now logged in as: Admin User
   Click Button  xpath=//button[text()='Logout']
