@@ -1,5 +1,7 @@
 #!/bin/bash
-set -xe
+set -e
+
+[[ -n "${IAM_TESTSUITE_DEBUG}" ]] && set -x
 
 TESTSUITE_REPO="${TESTSUITE_REPO:-https://github.com/indigo-iam/iam-robot-testsuite.git}"
 TESTSUITE_BRANCH="${TESTSUITE_BRANCH:-master}"
@@ -23,33 +25,34 @@ IAM_HTTP_SCHEME="${IAM_HTTP_SCHEME:-http}"
 
 ## Waiting for IAM
 start_ts=$(date +%s)
-timeout=300
+timeout=${SERVICE_WAIT_TIMEOUT:-300}
 sleeped=0
 
 set +e
 while true; do
     (curl -kIs --get $IAM_BASE_URL/login | egrep -q "200 OK|HTTP/2 200") 2>&1
     result=$?
+    now_ts=$(date +%s)
+    wait_ts=$((now_ts - start_ts))
     if [[ $result -eq 0 ]]; then
-        end_ts=$(date +%s)
-        echo "IAM is available after $((end_ts - start_ts)) seconds"
+        echo "IAM is available after ${wait_ts} seconds"
         break
     fi
-    echo "Waiting for IAM..."
+    echo "Waiting for IAM... (time in wait: ${wait_ts} secs; sleep time: ${sleeped} secs)"
     sleep 5
     
     sleeped=$((sleeped+5))
     if [ $sleeped -ge $timeout  ]; then
-    	echo "Timeout!"
+    	echo "Wait timeout after ${sleeped} seconds!"
     	exit 1
-	fi
+    fi
 done
 set -e
 
 ## Wait for Selenium Hub
 if [ ! -z $REMOTE_URL ]; then
 	start_ts=$(date +%s)
-	timeout=300
+	timeout=${SERVICE_WAIT_TIMEOUT:-300}
 	sleeped=0
 	set +e
 	url=`echo $REMOTE_URL | sed 's/wd\/hub//g'`
