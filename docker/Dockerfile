@@ -31,11 +31,9 @@ COPY files/kube-ca.crt.pem /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust
 
 ## Layer: RobotFramework
+COPY files/requirements.txt /
 RUN pip install --upgrade pip && \
-    pip install robotframework && \
-    pip install selenium && \
-    pip install robotframework-seleniumlibrary && \
-    pip install robotframework-httplibrary
+    pip install -r /requirements.txt
 
 ## Layer: tester
 RUN useradd -ms /bin/bash tester --uid ${USER_UID}

@@ -25,10 +25,7 @@ For run the testsuite, you need Robot Framework and Selenium. Install them with:
 
 ```console
  $ sudo yum install -y python-pip
- $ sudo pip install robotframework
- $ sudo pip install selenium
- $ sudo pip install robotframework-seleniumlibrary
- $ sudo pip install robotframework-httplibrary
+ $ sudo pip install install -r docker/files/requirements.txt
 ```
 
 By default, the testsuite run Selenium tests using Firefox web browser. If you want to use a different browser, you need to install

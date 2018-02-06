@@ -2,7 +2,7 @@
 ${IAM_HTTP_HOST}                 localhost:8080
 ${IAM_HTTP_SCHEME}               http
 ${IAM_BASE_URL}                  http://localhost:8080
-${IAM_TEST_CLIENT_URL}           http://localhost:9090/iam-test-client
+${IAM_TEST_CLIENT_URL}           http://localhost:9090/iam-test-client/
 ${IAM_TOKEN_ENDPOINT}            ${IAM_BASE_URL}/token
 ${ADMIN_USER}                    admin
 ${ADMIN_PASSWORD}                password
