@@ -7,6 +7,8 @@ Suite Teardown  Close All Browsers
 Test Setup  Non Admin Tests setup
 Test Teardown  Logout from Indigo dashboard
 
+Force Tags   tokens:authenticated-user
+
 *** Variables ***
 ${TEST_USER_USERNAME}   test
 ${TEST_USER_PASSWORD}   password
