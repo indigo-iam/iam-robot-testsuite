@@ -1,10 +1,14 @@
 *** Settings ***
 
 Resource  lib/utils.robot
+
 Suite Setup  Go to IAM
 Suite Teardown  Close All Browsers
+
 Test Setup  Tokens tests setup
 Test Teardown  Tokens tests teardown
+
+Force Tags   tokens:pagination
 
 *** Test Cases ***
 
