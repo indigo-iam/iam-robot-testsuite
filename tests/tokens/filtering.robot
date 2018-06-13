@@ -40,20 +40,26 @@ Filter Refresh Tokens By Client
   ${token}=  Get token with resource owner flow  token-exchange-actor  secret  admin  password  openid profile offline_access
   Refresh Refresh Tokens List
   Refresh Token Badge Value Should Be  ${2}
-  Access Token Badge Value Should Be  ${2}
   Select Refresh Token Client Filter  token-exchange-actor
   Refresh Token Badge Value Should Be  ${2}
   Refresh Token Filtered Value Should Be  ${1}
   Refresh Token List Should Contain Token Value  ${token["refresh_token"]}
+  Access Token Badge Value Should Be  ${0}
+  Go to access tokens page
+  Refresh Access Tokens List
+  Access Token Badge Value Should Be  ${2}
 
 Filter Refresh Tokens By User
   Go to refresh tokens page
   Get token with resource owner flow  token-exchange-subject  secret  test  password  openid profile offline_access
   ${token}=  Get token with resource owner flow  token-exchange-actor  secret  admin  password  openid profile offline_access
   Refresh Refresh Tokens List
-  Access Token Badge Value Should Be  ${2}
   Refresh Token Badge Value Should Be  ${2}
   Select Refresh Token User Filter  admin
   Refresh Token Badge Value Should Be  ${2}
   Refresh Token Filtered Value Should Be  ${1}
   Refresh Token List Should Contain Token Value  ${token["refresh_token"]}
+  Access Token Badge Value Should Be  ${0}
+  Go to access tokens page
+  Refresh Access Tokens List
+  Access Token Badge Value Should Be  ${2}

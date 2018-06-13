@@ -71,9 +71,11 @@ Refresh Token Filtered Value Should Be  [Arguments]  ${num}
 
 Refresh Access Tokens List
   Click Button  id=refresh_atoken_list
+  Wait until modal overlay disappear
 
 Refresh Refresh Tokens List
   Click Button  id=refresh_rtoken_list
+  Wait until modal overlay disappear
 
 Access Token List Should Contain Token Value  [Arguments]  ${token_value}
   Page Should Contain Element  xpath=//table[@id="access_token_list"]
@@ -116,7 +118,7 @@ Select Filter  [Arguments]  ${idBtn}  ${idInput}  ${filterText}
   Input Text  id=${idInput}  ${filterText}
   Wait Until Element Is Visible  xpath=//span[contains(@class, 'ui-select-choices-row-inner')]   timeout=0.05
   Click Element   xpath=//div[contains(@class, 'ui-select-choices-row') and contains(@class, 'active')]/span
-  Sleep   1s
+  Wait until modal overlay disappear
 
 Select Access Token Client Filter  [Arguments]  ${filterText}
   Select Filter  atok_client_search_btn  atok_client_search  ${filterText}
@@ -132,9 +134,11 @@ Select Refresh Token User Filter  [Arguments]  ${filterText}
 
 Navigate To Access Tokens List Page  [Arguments]  ${pageNumber}
   Click Link  xpath=//ul[@id='atoken_pagination_top']//a[text()=${pageNumber}]
+  Wait until modal overlay disappear
 
 Navigate To Refresh Tokens List Page  [Arguments]  ${pageNumber}
   Click Link  xpath=//ul[@id='rtoken_pagination_top']//a[text()=${pageNumber}]
+  Wait until modal overlay disappear
 
 Tokens tests setup
   Login as admin
