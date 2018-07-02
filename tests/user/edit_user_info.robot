@@ -41,6 +41,7 @@ Edit all user's info
   Input Email  ${TEST_USER_EMAIL_MOD}
   Input Username  ${TEST_USER_USERNAME_MOD}
   Input Picture  ${TEST_USER_PICTURE_MOD}
+  Sleep  2s
   Click Update Button
   Wait Until Page Contains  ${TEST_USER_GIVENNAME_MOD} ${TEST_USER_FAMILYNAME_MOD}
   Wait Until Page Contains  ${TEST_USER_USERNAME_MOD}
@@ -123,11 +124,11 @@ Edit user's picture
   Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
   Input Picture  ${TEST_USER_PICTURE_INVALID}
-  Wait Until Page Contains  This field is invalid
-  Wait Until Page Contains  This field is not a valid URL
+  Wait Image Check Failure
   Element Should Be Disabled  id=modal-btn-confirm
   Click Button  Reset Form
   Input Picture  ${TEST_USER_PICTURE_MOD}
+  Wait Image Check Success
   Click Update Button
   Wait Until Page Contains  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Page Should Contain Image  ${TEST_USER_PICTURE_MOD}
@@ -142,6 +143,13 @@ Login as admin and go to dashboard
 
 Wait Until Element Is Disabled  [Arguments]  ${id}
   Wait For Condition  return document.getElementById("${id}").getAttribute("disabled") == 'disabled' 
+
+Wait Image Check Failure
+  Wait Until Page Contains  This field is not a valid image
+
+Wait Image Check Success
+  Wait Until Page Contains Element  xpath=//*[@id='picture_preview']
+  Page Should Contain Image  xpath=//*[@id='picture_preview']
 
 Logout from dashboard
   Logout from Indigo dashboard
