@@ -103,3 +103,7 @@ Focus And Click Element   [Arguments]   ${locator}
 
 Scroll to the bottom of the page
   Execute Javascript   window.scrollTo(0, 2000)
+
+Close Dialog
+  Click Button  Cancel
+  Wait until modal overlay disappear

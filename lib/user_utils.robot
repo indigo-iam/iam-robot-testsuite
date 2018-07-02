@@ -16,10 +16,6 @@ Open add certificate dialog   [Arguments]   ${user}
   Click Element   name=btn-add-cert
   Wait Until Page Contains   Add an X.509 certificate to ${user}   timeout=0.05
 
-Close dialog
-  Click Element  id=modal-btn-cancel
-  Wait until modal overlay disappear
-
 Open add Open ID Connect account dialog  [Arguments]  ${user}
   Click Button  name=btn-add-oidc
   Wait Until Page Contains  Add OpenID Connect account to ${user}   timeout=0.05

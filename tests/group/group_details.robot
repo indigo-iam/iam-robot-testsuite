@@ -13,6 +13,7 @@ Force Tags   group:details
 ${PARENT_GROUP}        Test-001
   
 *** Test Cases ***
+
 Group details page contains subgroups table
   Page Should Contain Element  id=subgroupslist
   Page Should Contain Element  xpath=//*/h3[text()='Subgroups']
@@ -29,11 +30,11 @@ Empty group has emtpy details tables
 Subgroup creation form is invalid with name too long
   ${name}=  Set Variable  group_with_name_longer_than_fifty_characters_is_not_allowed
   Click Button  Add Subgroup
-  Input Name In Add Group Dialog  ${name}
+  Input Text  id=name  ${name}
   Element Should Be Disabled  id=modal-btn-confirm
   Page Should Contain Element  css=span.help-block
   Page Should Contain  Group name length must not exceed 50 characters
-  Close Groups Add Group Dialog
+  Close Dialog
   
 *** Keywords ***
 Setup for group details tests

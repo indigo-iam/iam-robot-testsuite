@@ -1,31 +1,36 @@
 *** Keywords ***
-Close Groups Add Group Dialog
-  Click Button  Cancel
-  Wait until modal overlay disappear
 
 Clear search in groups page
   Input text  xpath=//div[@class='input-group']/input  ${EMPTY}
 
-Create group  [Arguments]  ${name}
-  Open Groups Add Group Dialog
-  Input Name In Add Group Dialog  ${name}
-  Wait Until ELement Is Enabled  id=modal-btn-confirm
+Create root group  [Arguments]  ${name}
+  Open add root group dialog
+  Input Text  id=name  ${name}
+  Wait until element is enabled  id=modal-btn-confirm
   Click Element  id=modal-btn-confirm
   Wait until modal overlay disappear
 
-Delete group  [Arguments]  ${name}
-  Find group in groups page  ${name}
-  ${uuid}=  Get group uuid  ${name}
-  Click Button  id=delete_group_${uuid}
-  Wait Until Page Contains  Are you sure you want to delete group '${name}'
+Create subgroup to  [Arguments]  ${parentName}  ${subgroupName}
+  Open add subgroup dialog for group  ${parentName}
+  Input Text  id=name  ${subgroupName}
+  Click Button  Add Subgroup
+  Wait until modal overlay disappear
+  Wait Until Page Contains  New group ${parentName}/${subgroupName} added as subgroup of ${parentName}
+  Clear search in groups page
+  Wait Until Page Contains Element  id=groupslist
+
+Delete group  [Arguments]  ${groupName}
+  Open delete group dialog  ${groupName}
   Click Button  Delete Group
   Wait until modal overlay disappear
-  Wait Until Page Contains  Group '${name}' DELETED successfully
+  Wait Until Page Contains  Group ${groupName} successfully deleted
   Clear search in groups page
   Wait Until Page Contains Element  id=groupslist
 
 Find group in groups page  [Arguments]  ${text}
   Input text  xpath=//div[@class='input-group']/input  ${text}
+  Sleep  251ms
+  Wait until modal overlay disappear
   Wait Until Page Contains Element  xpath=//*[@id='groupslist']/tbody/tr/td/a[text()='${text}']
 
 Get group uuid  [Arguments]  ${name}
@@ -39,10 +44,20 @@ Go to group details page  [Arguments]  ${groupname}
   Click Link  link=${groupname}
   Wait until modal overlay disappear
 
-Input Name In Add Group Dialog  [Arguments]  ${name}
-  Input Text  id=name  ${name}
-
-Open Groups Add Group Dialog
+Open add root group dialog
   Wait Until Page Contains Element  css=.box-footer
-  Click Button  Add Group
-  Wait Until Page Contains  Add new group
+  Click Button  Add Root Group
+  Wait Until Page Contains  Add root group
+
+Open add subgroup dialog for group  [Arguments]  ${parentName}
+  Find group in groups page  ${parentName}
+  ${uuid}=  Get group uuid  ${parentName}
+  Click Button  id=add_subgroup_${uuid}
+  Wait Until Page Contains  Add new subgroup to ${parentName}
+
+Open delete group dialog  [Arguments]  ${groupName}
+  Find group in groups page  ${groupName}
+  ${uuid}=  Get group uuid  ${groupName}
+  Click Button  id=delete_group_${uuid}
+  Wait Until Page Contains  Are you sure you want to delete group '${groupName}'
+  Wait until element is enabled  id=modal-btn-confirm

@@ -27,12 +27,17 @@ Input Picture In Add User Dialog  [Arguments]  ${picture}
 Input search text in users page  [Arguments]  ${text}
   Input text  xpath=//div[@class='input-group']/input  ${text}
 
-Find user in users page  [Arguments]  ${user}
+Search user in users page  [Arguments]  ${user}
   Input search text in users page  ${user}
+  Sleep  251ms
+  Wait until modal overlay disappear
+
+Find user in users page  [Arguments]  ${user}
+  Search user in users page  ${user}
   Wait Until Page Contains Element  xpath=//*[@id='userslist']/tbody/tr/td/a[text()='${user}']
 
 Clear search in users page
-  Input text  xpath=//div[@class='input-group']/input  ${EMPTY}
+  Search user in users page  ${EMPTY}
 
 Input New User  [Arguments]  ${givenname}  ${surname}  ${email}  ${username}
   Input Name In Add User Dialog  ${givenname}
@@ -51,13 +56,13 @@ Delete user  [Arguments]  ${name}
   Find user in users page  ${name}
   ${uuid}=  Get user uuid  ${name}
   Click Element  xpath=//button[@id='delete_user_${uuid}']
-  Wait Until Page Contains  Are you sure you want to delete user '${name}'
+  Wait Until Page Contains  Delete user '${name}'
+  Wait Until ELement Is Enabled  id=modal-btn-confirm
   Click Button  Delete User
   Wait until modal overlay disappear
   Wait Until Page Contains  has been removed successfully
   Clear search in users page
   Wait Until Page Contains Element  id=userslist
-  Table Row Should Contain  userslist  10  Delete
 
 Get user uuid  [Arguments]  ${name}
   Find user in users page  ${name}
@@ -66,6 +71,6 @@ Get user uuid  [Arguments]  ${name}
   [return]  ${uuid}
 
 Check user not found  [Arguments]  ${name}
-  Input search text in users page  ${name}
+  Search user in users page  ${name}
   Page Should Not Contain  xpath=//*[@id='userslist']/tbody/tr/td/a[text()='${name}']
   Clear search in users page
