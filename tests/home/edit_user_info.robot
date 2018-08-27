@@ -23,7 +23,7 @@ ${TEST_NEWEMAIL_INVALID}          john.kennedy@
 ${TEST_NEWEMAIL_ANOTHERUSER}      test@iam.test
 ${TEST_NEWEMAIL}                  john.kennedy@gov.us
 ${TEST_NEWPICTURE_INVALID}        not_a_URL
-${TEST_NEWPICTURE}                http://host.domain.org/path/to/picture.jpg
+${TEST_NEWPICTURE}                https://www.isecur1ty.org/wp-content/uploads/2014/12/pen2.png
 
 *** Test Cases ***
 
@@ -81,8 +81,8 @@ Edit Picture
   Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
   Input Picture  ${TEST_NEWPICTURE_INVALID}
-  Wait Until Page Contains  This field is invalid
-  Wait Until Page Contains  This field is not a valid URL
+  Wait Image Check Failure  This field is invalid
+  Wait Image Check Failure  This field is not a valid URL
   Element Should Be Disabled  id=modal-btn-confirm
   Click Button  Reset Form
   Input Picture  ${TEST_NEWPICTURE}
@@ -106,6 +106,7 @@ Edit All Info
   Input Family Name  ${TEST_USER_FAMILYNAME}
   Input Email  ${TEST_USER_EMAIL}
   Input Picture  ${EMPTY}
+  Wait Image Check Success
   Click Update Button
   Wait Until Page Contains  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Page Contains  ${TEST_USER_EMAIL}
@@ -121,6 +122,13 @@ Wait Until Element Is Disabled  [Arguments]  ${id}
 Logout from dashboard
   Logout from Indigo dashboard
 
+Wait Image Check Failure  [Arguments]  ${errorMessage}
+  Wait Until Page Contains  ${errorMessage}
+
+Wait Image Check Success
+  Wait Until Page Contains Element  xpath=//*[@id='picture_preview']
+  Page Should Contain Image  xpath=//*[@id='picture_preview']
+
 Input Given Name  [Arguments]  ${givenname}
   Input Text  id=name  ${givenname}
 
@@ -132,6 +140,9 @@ Input Picture  [Arguments]  ${pictureURL}
 
 Input Email  [Arguments]  ${email}
   Input Text  id=email  ${email}
+
+Input Username  [Arguments]  ${username}
+  Input Text  id=username  ${username}
 
 Click Update Button
   Wait Until ELement Is Enabled  id=modal-btn-confirm
