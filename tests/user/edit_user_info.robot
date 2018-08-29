@@ -29,7 +29,9 @@ ${TEST_USER_EMAIL_INVALID}       thisisnotamail
 ${TEST_USER_EMAIL_INUSE}         test@iam.test
 ${TEST_USER_EMAIL_MOD}           john.lennon@liverpool.uk
 
-${TEST_USER_USERNAME_INVALID}    JJ
+${TEST_USER_USERNAME_MINERROR}   JJ
+${TEST_USER_USERNAME_MAXERROR}   abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz_abcdefghijklmnopqrstuvwxyz
+${TEST_USER_USERNAME_INVALID}    JJ<Abrams>
 ${TEST_USER_USERNAME_INUSE}      test
 ${TEST_USER_USERNAME_MOD}        john.lennon
 
@@ -110,12 +112,22 @@ Edit user's email
 Edit user's username
   Open edit user dialog  ${TEST_USER_GIVENNAME} ${TEST_USER_FAMILYNAME}
   Wait Until Element Is Disabled  modal-btn-confirm
-  Input Username  ${TEST_USER_USERNAME_INVALID}
+  Input Username  ${TEST_USER_USERNAME_MINERROR}
   Wait Until Page Contains  Minimum length required is 3
-  Wait Until Element Is Disabled  modal-btn-confirm
+  Element Should Be Disabled  id=modal-btn-confirm
+  Click Button  Reset Form
+  Input Username  ${TEST_USER_USERNAME_MAXERROR}
+  Wait Until Page Contains  Maximum length required is 128
+  Element Should Be Disabled  id=modal-btn-confirm
+  Click Button  Reset Form
+  Input Username  ${TEST_USER_USERNAME_INVALID}
+  Wait Until Page Contains  Invalid characters
+  Element Should Be Disabled  id=modal-btn-confirm
+  Click Button  Reset Form
   Input Username  ${TEST_USER_USERNAME_INUSE}
   Wait Until Page Contains  Username already in use
   Wait Until Element Is Disabled  modal-btn-confirm
+  Click Button  Reset Form
   Input Username  ${TEST_USER_USERNAME_MOD}
   Click Update Button
   Wait Until Page Contains  ${TEST_USER_USERNAME_MOD}
